@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITBA - Blog y Noticias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --color-primary: #0056b3;
+            --color-secondary: #008EBA;
+            --color-accent: #17a2b8;
+            --color-background: #f8f9fa;
+            --color-text: #333;
+            --color-text-light: #6c757d;
+            --transition: all 0.3s ease;
+            
+            /* Colores para el menú */
+            --color-menu-1: #011eff; /* Turquesa */
+            --color-menu-2: #008EBA; /* Gris */
+            --color-menu-3: #00BC6F; /* Naranja para Desarrollo Profesional */
+            --color-menu-4: #00B8FF; /* Púrpura */
+            --color-menu-5: #A200C9; /* Verde */
+            --color-menu-6: #D600FE; /* Naranja */
+            --color-menu-7: #FFB000; /* Rosa */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* CORRECCIÓN: Prevenir desplazamiento horizontal */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
+        }
+
+        .custom-icon {
+            width: 24px;       /* o el tamaño que necesites */
+            height: 24px;
+            filter: brightness(0) invert(1); /* Esto hace que la imagen se vea blanca */
+        }
+
+        /* Logo alineado a la izquierda */
+        .logo-container {
+            display: flex;
+            justify-content: space-between; /* Cambiado para acomodar el botón hamburguesa */
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: black; /* Cambiado de white a black */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            height: 35px; /* Logo más pequeño */
+            transition: var(--transition);
+            filter: brightness(0) invert(1); /* Invertir colores para que el logo sea blanco */
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* NUEVO: Botón hamburguesa para móviles */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: stretch;
+            height: 40px;
+        }
+
+        /* Nuevo estilo para el menú con submenús */
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a {
+            text-decoration: none;
+            font-size: 0.75rem; /* Texto más grande */
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            white-space: nowrap;
+            color: white; /* Texto blanco para todos */
+        }
+
+        /* Colores específicos para cada elemento del menú - ahora con fondo de color */
+        .nav-item:nth-child(1) > a {
+            background-color: var(--color-menu-1);
+        }
+        .nav-item:nth-child(2) > a {
+            background-color: var(--color-menu-2);
+        }
+        .nav-item:nth-child(3) > a {
+            background-color: var(--color-menu-3);
+        }
+        .nav-item:nth-child(4) > a {
+            background-color: var(--color-menu-4);
+        }
+        .nav-item:nth-child(5) > a {
+            background-color: var(--color-menu-5);
+        }
+        .nav-item:nth-child(6) > a {
+            background-color: var(--color-menu-6);
+        }
+        .nav-item:nth-child(7) > a {
+            background-color: var(--color-menu-7);
+        }
+
+        /* Hover para cada elemento del menú - ajustado para el nuevo estilo */
+        .nav-item:nth-child(1) > a:hover, .nav-item:nth-child(1):hover > a {
+            background-color: var(--color-menu-1);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(2) > a:hover, .nav-item:nth-child(2):hover > a {
+            background-color: var(--color-menu-2);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(3) > a:hover, .nav-item:nth-child(3):hover > a {
+            background-color: var(--color-menu-3);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(4) > a:hover, .nav-item:nth-child(4):hover > a {
+            background-color: var(--color-menu-4);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(5) > a:hover, .nav-item:nth-child(5):hover > a {
+            background-color: var(--color-menu-5);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(6) > a:hover, .nav-item:nth-child(6):hover > a {
+            background-color: var(--color-menu-6);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(7) > a:hover, .nav-item:nth-child(7):hover > a {
+            background-color: var(--color-menu-7);
+            opacity: 0.9;
+        }
+
+        /* Estilos para el submenú */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu-header {
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+            font-size: 0.8rem; /* Texto más grande */
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Colores para los encabezados de submenú */
+        .nav-item:nth-child(1) .submenu-header {
+            background-color: var(--color-menu-1);
+            color: white;
+        }
+        .nav-item:nth-child(2) .submenu-header {
+            background-color: var(--color-menu-2);
+            color: white;
+        }
+        .nav-item:nth-child(3) .submenu-header {
+            background-color: var(--color-menu-3);
+            color: white;
+        }
+        .nav-item:nth-child(4) .submenu-header {
+            background-color: var(--color-menu-4);
+            color: white;
+        }
+        .nav-item:nth-child(5) .submenu-header {
+            background-color: var(--color-menu-5);
+            color: white;
+        }
+        .nav-item:nth-child(6) .submenu-header {
+            background-color: var(--color-menu-6);
+            color: white;
+        }
+        .nav-item:nth-child(7) .submenu-header {
+            background-color: var(--color-menu-7);
+            color: white;
+        }
+
+        .submenu-item {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.8rem; /* Texto más grande */
+            transition: var(--transition);
+            display: block;
+            text-decoration: none;
+        }
+
+        /* Colores para los elementos del submenú */
+        .nav-item:nth-child(1) .submenu-item {
+            color: var(--color-menu-1);
+        }
+        .nav-item:nth-child(2) .submenu-item {
+            color: var(--color-menu-2);
+        }
+        .nav-item:nth-child(3) .submenu-item {
+            color: var(--color-menu-3);
+        }
+        .nav-item:nth-child(4) .submenu-item {
+            color: var(--color-menu-4);
+        }
+        .nav-item:nth-child(5) .submenu-item {
+            color: var(--color-menu-5);
+        }
+        .nav-item:nth-child(6) .submenu-item {
+            color: var(--color-menu-6);
+        }
+        .nav-item:nth-child(7) .submenu-item {
+            color: var(--color-menu-7);
+        }
+
+        /* Hover para los elementos del submenú */
+        .nav-item:nth-child(1) .submenu-item:hover {
+            background-color: rgba(78, 205, 196, 0.1);
+        }
+        .nav-item:nth-child(2) .submenu-item:hover {
+            background-color: rgba(108, 117, 125, 0.1);
+        }
+        .nav-item:nth-child(3) .submenu-item:hover {
+            background-color: rgba(126, 166, 224, 0.1);
+        }
+        .nav-item:nth-child(4) .submenu-item:hover {
+            background-color: rgba(161, 125, 195, 0.1);
+        }
+        .nav-item:nth-child(5) .submenu-item:hover {
+            background-color: rgba(181, 198, 137, 0.1);
+        }
+        .nav-item:nth-child(6) .submenu-item:hover {
+            background-color: rgba(248, 169, 120, 0.1);
+        }
+        .nav-item:nth-child(7) .submenu-item:hover {
+            background-color: rgba(229, 152, 155, 0.1);
+        }
+
+        /* MODIFICADO: Estilos para el submenú de dos columnas - ajustado para que no se salga de la pantalla */
+        .mega-submenu {
+            position: absolute;
+            top: 100%;
+            left: 0; /* Cambiado para que se posicione con JavaScript */
+            background: white;
+            width: 800px;
+            max-width: 90vw; /* Evitar que se salga de la pantalla */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+
+        .nav-item:hover .mega-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mega-submenu-header {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+            font-size: 0.9rem; /* Texto más grande */
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Colores para los encabezados de mega-submenú */
+        .nav-item:nth-child(1) .mega-submenu-header {
+            background-color: var(--color-menu-1);
+            color: white;
+        }
+        .nav-item:nth-child(2) .mega-submenu-header {
+            background-color: var(--color-menu-2);
+            color: white;
+        }
+        .nav-item:nth-child(3) .mega-submenu-header {
+            background-color: var(--color-menu-3);
+            color: white;
+        }
+        .nav-item:nth-child(4) .mega-submenu-header {
+            background-color: var(--color-menu-4);
+            color: white;
+        }
+        .nav-item:nth-child(5) .mega-submenu-header {
+            background-color: var(--color-menu-5);
+            color: white;
+        }
+        .nav-item:nth-child(6) .mega-submenu-header {
+            background-color: var(--color-menu-6);
+            color: white;
+        }
+        .nav-item:nth-child(7) .mega-submenu-header {
+            background-color: var(--color-menu-7);
+            color: white;
+        }
+
+        .mega-submenu-column {
+            width: 50%; /* Aseguramos que cada columna ocupe exactamente el 50% */
+            padding: 0 0.5rem;
+        }
+
+        .mega-submenu-column-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .mega-submenu-section {
+            margin-bottom: 1rem;
+        }
+
+        .mega-submenu-section-title {
+            font-weight: 600;
+            font-size: 0.85rem; /* Texto más grande */
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Colores para los títulos de sección */
+        .nav-item:nth-child(1) .mega-submenu-section-title {
+            color: var(--color-menu-1);
+            border-bottom-color: rgba(78, 205, 196, 0.3);
+        }
+        .nav-item:nth-child(2) .mega-submenu-section-title {
+            color: var(--color-menu-2);
+            border-bottom-color: rgba(108, 117, 125, 0.3);
+        }
+        .nav-item:nth-child(3) .mega-submenu-section-title {
+            color: var(--color-menu-3);
+            border-bottom-color: rgba(255, 176, 0, 0.3);
+        }
+        .nav-item:nth-child(4) .mega-submenu-section-title {
+            color: var(--color-menu-4);
+            border-bottom-color: rgba(161, 125, 195, 0.3);
+        }
+        .nav-item:nth-child(5) .mega-submenu-section-title {
+            color: var(--color-menu-5);
+            border-bottom-color: rgba(181, 198, 137, 0.3);
+        }
+        .nav-item:nth-child(6) .mega-submenu-section-title {
+            color: var(--color-menu-6);
+            border-bottom-color: rgba(248, 169, 120, 0.3);
+        }
+        .nav-item:nth-child(7) .mega-submenu-section-title {
+            color: var(--color-menu-7);
+            border-bottom-color: rgba(229, 152, 155, 0.3);
+        }
+
+        .mega-submenu-item {
+            padding: 0.3rem 0.5rem;
+            font-size: 0.75rem; /* Texto más grande */
+            transition: var(--transition);
+            display: block;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        /* Colores para los elementos del mega-submenú */
+        .nav-item:nth-child(1) .mega-submenu-item {
+            color: #000000; /* Negro para todos los elementos del submenu */
+        }
+        .nav-item:nth-child(2) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(3) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(4) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(5) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(6) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(7) .mega-submenu-item {
+            color: #000000;
+        }
+
+        /* Hover para los elementos del mega-submenú */
+        .main-menu-item:nth-child(1) .mega-submenu-item:hover {
+            background-color: rgba(78, 205, 196, 0.1);
+        }
+        .main-menu-item:nth-child(2) .mega-submenu-item:hover {
+            background-color: rgba(108, 117, 125, 0.1);
+        }
+        .main-menu-item:nth-child(3) .mega-submenu-item:hover {
+            background-color: rgba(255, 176, 0, 0.1);
+        }
+        .main-menu-item:nth-child(4) .mega-submenu-item:hover {
+            background-color: rgba(161, 125, 195, 0.1);
+        }
+        .main-menu-item:nth-child(5) .mega-submenu-item:hover {
+            background-color: rgba(181, 198, 137, 0.1);
+        }
+        .main-menu-item:nth-child(6) .mega-submenu-item:hover {
+            background-color: rgba(248, 169, 120, 0.1);
+        }
+
+        /* Estilo para los submenús anidados */
+        .mega-submenu-subitem {
+            padding-left: 1rem;
+            font-size: 0.7rem;
+            color: #000000;
+            display: block;
+            text-decoration: none;
+            margin: 0.2rem 0;
+        }
+
+        .mega-submenu-subitem:hover {
+            text-decoration: underline;
+        }
+
+        .donate-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            height: 100%;
+            font-size: 0.75rem; /* Texto más grande */
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .donate-btn:hover {
+            background: var(--color-secondary);
+        }
+
+        /* Nuevo estilo para el menú principal */
+        .main-menu-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 5%;
+            background-color: transparent;
+            margin-top: 1.5rem; /* Agregar margen superior para equilibrar con el logo */
+        }
+
+        .main-menu {
+            display: flex;
+            width: 100%;
+            height: auto; /* Altura automática para adaptarse al contenido */
+            gap: 10px; /* Separación entre elementos del menú */
+            align-items: stretch; /* Alinear elementos para que se estiren */
+        }
+
+        .main-menu-item {
+            flex: 1;
+            display: flex;
+            align-items: stretch; /* Permitir que se estire */
+            height: auto; /* Altura automática */
+            border-radius: 5px; /* Bordes redondeados para cada elemento */
+            position: relative; /* IMPORTANTE: Para posicionamiento del submenu */
+            /* ELIMINADO: overflow: hidden; - Esto estaba cortando el submenu */
+        }
+
+        /* Modificar los estilos del menú principal para centrar el contenido */
+        .main-menu-item > a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centrar verticalmente */
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem 0.5rem; /* Padding vertical aumentado */
+            transition: var(--transition);
+            line-height: 1.2;
+        }
+
+        /* Estilo para los iconos del menú - centrados */
+        .menu-icon {
+            width: 36px;
+            height: 36px;
+            stroke-width: 2;
+        }
+
+        /* Contenedor para alinear los iconos - centrado */
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px; /* Altura fija para todos los iconos */
+            margin-bottom: 12px; /* Espacio entre icono y texto */
+            width: 100%; /* Asegurar que ocupe todo el ancho */
+        }
+
+        .main-menu-item:nth-child(1) > a {
+            background-color: var(--color-menu-1);
+        }
+        .main-menu-item:nth-child(2) > a {
+            background-color: var(--color-menu-2);
+        }
+        .main-menu-item:nth-child(3) > a {
+            background-color: var(--color-menu-3); /* Cambiado a FFB000 */
+        }
+        .main-menu-item:nth-child(4) > a {
+            background-color: var(--color-menu-4);
+        }
+        .main-menu-item:nth-child(5) > a {
+            background-color: var(--color-menu-5);
+        }
+        .main-menu-item:nth-child(6) > a {
+            background-color: var(--color-menu-6);
+        }
+        .main-menu-item:nth-child(7) > a {
+            background-color: var(--color-menu-7);
+        }
+        .main-menu-item > a:hover {
+            opacity: 0.9;
+        }
+
+        /* MODIFICADO: Estilos específicos para el mega-submenu en el menú principal - ajustado para que no se salga de la pantalla */
+        .main-menu-item .mega-submenu {
+            position: absolute;
+            top: 100%;
+            left: 0; /* Cambiado para que se posicione con JavaScript */
+            width: 800px;
+            max-width: 90vw; /* Evitar que se salga de la pantalla */
+            z-index: 9999; /* Valor alto para asegurar que esté por encima de todo */
+            display: flex; /* Aseguramos que sea flex */
+            flex-wrap: wrap; /* Permitimos que los elementos se envuelvan */
+        }
+
+        /* MODIFICADO: Mostrar el mega-submenu al hacer hover en el elemento del menú principal */
+        .main-menu-item:hover .mega-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Colores para los encabezados de mega-submenú en el menú principal */
+        .main-menu-item:nth-child(1) .mega-submenu-header {
+            background-color: var(--color-menu-1);
+            color: white;
+        }
+        .main-menu-item:nth-child(2) .mega-submenu-header {
+            background-color: var(--color-menu-2);
+            color: white;
+        }
+        .main-menu-item:nth-child(3) .mega-submenu-header {
+            background-color: var(--color-menu-3);
+            color: white;
+        }
+        .main-menu-item:nth-child(4) .mega-submenu-header {
+            background-color: var(--color-menu-4);
+            color: white;
+        }
+        .main-menu-item:nth-child(5) .mega-submenu-header {
+            background-color: var(--color-menu-5);
+            color: white;
+        }
+        .main-menu-item:nth-child(6) .mega-submenu-header {
+            background-color: var(--color-menu-6);
+            color: white;
+        }
+
+        /* Colores para los títulos de sección en el menú principal */
+        .main-menu-item:nth-child(1) .mega-submenu-section-title {
+            color: var(--color-menu-1);
+            border-bottom-color: rgba(78, 205, 196, 0.3);
+        }
+        .main-menu-item:nth-child(2) .mega-submenu-section-title {
+            color: var(--color-menu-2);
+            border-bottom-color: rgba(108, 117, 125, 0.3);
+        }
+        .main-menu-item:nth-child(3) .mega-submenu-section-title {
+            color: var(--color-menu-3);
+            border-bottom-color: rgba(255, 176, 0, 0.3);
+        }
+        .main-menu-item:nth-child(4) .mega-submenu-section-title {
+            color: var(--color-menu-4);
+            border-bottom-color: rgba(161, 125, 195, 0.3);
+        }
+        .main-menu-item:nth-child(5) .mega-submenu-section-title {
+            color: var(--color-menu-5);
+            border-bottom-color: rgba(181, 198, 137, 0.3);
+        }
+        .main-menu-item:nth-child(6) .mega-submenu-section-title {
+            color: var(--color-menu-6);
+            border-bottom-color: rgba(248, 169, 120, 0.3);
+        }
+
+        /* NUEVO: Estilos para el menú móvil */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            padding: 2rem 1rem;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        .mobile-menu-item {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 600;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-link:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .mobile-menu-icon {
+            margin-right: 1rem;
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-submenu {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .mobile-submenu.active {
+            display: block;
+        }
+
+        .mobile-submenu-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-submenu-link {
+            display: block;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-submenu-link:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .mobile-menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .mobile-menu-toggle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active .mobile-menu-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Estilos para la página del blog */
+        .blog-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .blog-subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 4rem;
+        }
+
+        .blog-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .blog-categories {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .blog-sort {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sort-label {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .sort-select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-category {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+            line-height: 1.3;
+        }
+
+        .blog-card-excerpt {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-top: auto;
+        }
+
+        .blog-card-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-card-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-card-author-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pagination-btn:hover, .pagination-btn.active {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .featured-posts {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-accent);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .featured-main {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            height: 100%;
+        }
+
+        .featured-secondary {
+            grid-column: 2;
+            height: 100%;
+        }
+
+        .featured-card {
+            height: 100%;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .featured-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        .featured-card-category {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .featured-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .search-bar {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+        }
+
+        .search-bar:focus-within {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-icon {
+            color: var(--color-secondary);
+            margin-right: 0.5rem;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            font-size: 1rem;
+            padding: 0.5rem;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-link {
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-link:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #0a0f1c;
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        .footer-logo img {
+            filter: brightness(0) invert(1);
+            max-width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .footer-logo img:hover {
+            opacity: 0.8;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            line-height: 2;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        @media (max-width: 1200px) {
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-logo {
+                grid-column: 1 / -1;
+                justify-self: center;
+                margin-bottom: 2rem;
+            }
+            .mega-submenu {
+                width: 600px;
+            }
+            
+            /* Ajuste para el mega-submenu en el menú principal en pantallas medianas */
+            .main-menu-item .mega-submenu {
+                width: 600px;
+            }
+            
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .mega-submenu {
+                width: 500px;
+            }
+            
+            .mega-submenu-column {
+                width: 50%;
+            }
+            
+            /* Ajustes para el menú principal en pantallas medianas */
+            .main-menu {
+                gap: 5px;
+            }
+            
+            .main-menu-item > a {
+                font-size: 1rem;
+                padding: 0.75rem 0.25rem;
+            }
+            
+            .menu-icon {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 8px;
+            }
+            
+            /* Ajuste para el mega-submenu en el menú principal en pantallas medianas */
+            .main-menu-item .mega-submenu {
+                width: 500px;
+            }
+            
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-main {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            
+            .featured-secondary {
+                grid-column: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* NUEVO: Mostrar botón hamburguesa y ocultar menú principal */
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .main-menu-container {
+                display: none;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .blog-categories {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                justify-content: flex-start;
+            }
+            
+            .search-bar {
+                margin: 2rem 1rem;
+                width: auto;
+                padding: 0.5rem;
+            }
+
+            .search-input {
+                width: 100%;
+                min-width: 0;
+                margin-right: 0.5rem;
+            }
+
+            .search-link {
+                white-space: nowrap;
+                padding: 0.7rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .search-bar {
+                margin: 2rem 1rem;
+                width: calc(100% - 2rem);
+                box-sizing: border-box;
+            }
+            
+            .blog-header {
+                padding: 4rem 1rem;
+            }
+            
+            .blog-subtitle {
+                font-size: 1rem;
+            }
+            
+            .featured-card-title {
+                font-size: 1.2rem;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .section-title {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo alineado a la izquierda -->
+    <div class="logo-container">
+        <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/ITBA-logo3.png" alt="ITBA Logo" class="logo">
+        <!-- NUEVO: Botón hamburguesa para móviles -->
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    
+    <!-- NUEVO: Menú móvil -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="infoSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-1.png" class="mobile-menu-icon" alt="Info ITBA">
+                    Info ITBA
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="infoSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información Académica</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Experiencia Académica</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Normativas</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Becas y Préstamos</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="tramitesSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-2.png" class="mobile-menu-icon" alt="Trámites y Servicios">
+                    Trámites y Servicios
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="tramitesSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Servicios</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información Administrativa</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Espacios</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="bienestarSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-6.png" class="mobile-menu-icon" alt="Bienestar y Tutorías">
+                    Bienestar y Tutorías
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="bienestarSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Bienestar Estudiantil</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Tutorías</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="primerAnoSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-7.png" class="mobile-menu-icon" alt="Estudiantes Primer Año">
+                    Estudiantes Primer Año
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="primerAnoSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información Básica</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Recursos</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="iniciativasSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-4.png" class="mobile-menu-icon" alt="Iniciativas Estudiantiles">
+                    Iniciativas Estudiantiles
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="iniciativasSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Grupos Estudiantiles</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Participación</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="movilidadSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-3.png" class="mobile-menu-icon" alt="Movilidad Internacional">
+                    Movilidad Internacional
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="movilidadSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Programas</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="desarrolloSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-5.png" class="mobile-menu-icon" alt="Desarrollo Profesional">
+                    Desarrollo Profesional
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="desarrolloSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Carrera Profesional</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Recursos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Nuevo menú principal con iconos y separación -->
+    <div class="main-menu-container">
+        <div class="main-menu">
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-1.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Info ITBA
+                </a>
+                <!-- Nuevo submenu desplegable para Info ITBA con dos columnas principales -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Información ITBA</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Académica</div>
+                            <a href="#" class="mega-submenu-item">Matriculaciones</a>
+                            <div class="mega-submenu-subitem">- Materias</div>
+                            <div class="mega-submenu-subitem">- PPS</div>
+                            <div class="mega-submenu-subitem">- SAT</div>
+                            <a href="#" class="mega-submenu-item">Exámenes Finales</a>
+                            <a href="#" class="mega-submenu-item">Validación inglés</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Experiencia Académica</div>
+                            <a href="#" class="mega-submenu-item">Ayudantías</a>
+                            <a href="#" class="mega-submenu-item">Tareas para la Universidad</a>
+                            <a href="#" class="mega-submenu-item">Investigaciones</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Normativas</div>
+                            <a href="#" class="mega-submenu-item">Boletín General</a>
+                            <a href="#" class="mega-submenu-item">Reglamentaciones</a>
+                            <a href="#" class="mega-submenu-item">Política de Préstamo de Activos</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Becas y Préstamos</div>
+                            <a href="#" class="mega-submenu-item">Becas y Prestamos de honor</a>
+                            <a href="#" class="mega-submenu-item">Planes de estudio</a>
+                            <a href="#" class="mega-submenu-item">Grillas</a>
+                            <a href="#" class="mega-submenu-item">Calendario académico</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-2.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Tramites y Servicios
+                </a>
+                <!-- Nuevo submenu desplegable para Trámites y Servicios con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Trámites y Servicios</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Servicios</div>
+                            <a href="#" class="mega-submenu-item">Service Point</a>
+                            <div class="mega-submenu-subitem">- Servicio que ofrece</div>
+                            <div class="mega-submenu-subitem">- Horarios</div>
+                            <a href="#" class="mega-submenu-item">Préstamos</a>
+                            <div class="mega-submenu-subitem">- Lockers</div>
+                            <div class="mega-submenu-subitem">- Computadoras</div>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Espacios</div>
+                            <a href="#" class="mega-submenu-item">Reserva TuEspacioITBA</a>
+                            <a href="#" class="mega-submenu-item">Aulas libres</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Administrativa</div>
+                            <a href="#" class="mega-submenu-item">Certificaciones</a>
+                            <a href="#" class="mega-submenu-item">Documentación Obligatoria</a>
+                            <a href="#" class="mega-submenu-item">Facturación</a>
+                            <a href="#" class="mega-submenu-item">Inhibiciones</a>
+                            <a href="#" class="mega-submenu-item">Graduaciones</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Otros Servicios</div>
+                            <a href="#" class="mega-submenu-item">Impresión</a>
+                            <a href="#" class="mega-submenu-item">Impresión 3D</a>
+                            <a href="#" class="mega-submenu-item">Kit Festejo Responsable</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-6.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Bienestar y Tutorias
+                </a>
+                <!-- Submenu para Bienestar y Tutorías con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Bienestar y Tutorías</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Bienestar Estudiantil</div>
+                            <a href="#" class="mega-submenu-item">Apoyo Psicológico</a>
+                            <a href="#" class="mega-submenu-item">Actividades Recreativas</a>
+                            <a href="#" class="mega-submenu-item">Deportes</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Tutorías</div>
+                            <a href="#" class="mega-submenu-item">Programa de Tutorías</a>
+                            <a href="#" class="mega-submenu-item">Solicitar Tutor</a>
+                            <a href="#" class="mega-submenu-item">Ser Tutor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-7.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Estudiantes Primer Año
+                </a>
+                <!-- Submenu para Estudiantes Primer Año con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Estudiantes de Primer Año</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Básica</div>
+                            <a href="#" class="mega-submenu-item">Guía de Inicio</a>
+                            <a href="#" class="mega-submenu-item">Calendario Académico</a>
+                            <a href="#" class="mega-submenu-item">Materias Iniciales</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Recursos</div>
+                            <a href="#" class="mega-submenu-item">Tutorías para Ingresantes</a>
+                            <a href="#" class="mega-submenu-item">Preguntas Frecuentes</a>
+                            <a href="#" class="mega-submenu-item">Contactos Útiles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-4.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Iniciativas Estudiantiles
+                </a>
+                <!-- Submenu para Iniciativas Estudiantiles con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Iniciativas Estudiantiles</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Grupos Estudiantiles</div>
+                            <a href="#" class="mega-submenu-item">Clubes y Asociaciones</a>
+                            <a href="#" class="mega-submenu-item">Proyectos Estudiantiles</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Participación</div>
+                            <a href="#" class="mega-submenu-item">Crear una Iniciativa</a>
+                            <a href="#" class="mega-submenu-item">Financiamiento</a>
+                            <a href="#" class="mega-submenu-item">Eventos Estudiantiles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-3.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Movilidad Internacional
+                </a>
+                <!-- Submenu para Movilidad Internacional con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Movilidad Internacional</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Programas</div>
+                            <a href="#" class="mega-submenu-item">Intercambios Académicos</a>
+                            <a href="#" class="mega-submenu-item">Doble Titulación</a>
+                            <a href="#" class="mega-submenu-item">Pasantías Internacionales</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información</div>
+                            <a href="#" class="mega-submenu-item">Universidades Asociadas</a>
+                            <a href="#" class="mega-submenu-item">Requisitos</a>
+                            <a href="#" class="mega-submenu-item">Becas Internacionales</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-5.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Desarrollo Profesional
+                </a>
+                <!-- Submenu para Desarrollo Profesional con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Desarrollo Profesional</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Carrera Profesional</div>
+                            <a href="#" class="mega-submenu-item">Bolsa de Trabajo</a>
+                            <a href="#" class="mega-submenu-item">Pasantías</a>
+                            <a href="#" class="mega-submenu-item">Prácticas Profesionales</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Recursos</div>
+                            <a href="#" class="mega-submenu-item">Talleres de CV</a>
+                            <a href="#" class="mega-submenu-item">Entrevistas Simuladas</a>
+                            <a href="#" class="mega-submenu-item">Networking</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabecera del Blog -->
+     
+    <div class="blog-container">
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+        </div>
+
+        <!-- Artículos destacados -->
+        <section class="featured-posts">
+            <h2 class="section-title">Artículos Destacados</h2>
+            <div class="featured-grid">
+                <div class="featured-main">
+                    <div class="featured-card">
+                        <img src="https://www.itba.edu.ar/wp-content/uploads/2024/06/Fachada-SDT-1-1-1080x675.jpg" alt="Nuevo Campus ITBA" class="featured-card-img">
+                        <div class="featured-card-content">
+                            <span class="featured-card-category">Institucional</span>
+                            <h3 class="featured-card-title">ITBA inaugura nuevo edificio de investigación y desarrollo tecnológico</h3>
+                            <div class="featured-card-meta">
+                                <span>15 Mayo, 2024</span>
+                                <span>Por: Equipo de Comunicación</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-secondary">
+                    <div class="featured-card">
+                        <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/tech-trek-EI.jpg" alt="Experiencia Internacional" class="featured-card-img">
+                        <div class="featured-card-content">
+                            <span class="featured-card-category">Internacional</span>
+                            <h3 class="featured-card-title">Programa de intercambio con MIT abre inscripciones para 2025</h3>
+                            <div class="featured-card-meta">
+                                <span>10 Mayo, 2024</span>
+                                <span>Por: Oficina Internacional</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-secondary">
+                    <div class="featured-card">
+                        <img src="https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg" alt="Investigación" class="featured-card-img">
+                        <div class="featured-card-content">
+                            <span class="featured-card-category">Investigación</span>
+                            <h3 class="featured-card-title">Equipo de estudiantes desarrolla innovador sistema de energía renovable</h3>
+                            <div class="featured-card-meta">
+                                <span>5 Mayo, 2024</span>
+                                <span>Por: Departamento de Ingeniería</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtros del blog -->
+        <div class="blog-filters">
+            <div class="blog-categories">
+                <button class="category-btn active">Todos</button>
+                <button class="category-btn">Institucional</button>
+                <button class="category-btn">Académico</button>
+                <button class="category-btn">Investigación</button>
+                <button class="category-btn">Eventos</button>
+                <button class="category-btn">Internacional</button>
+                <button class="category-btn">Estudiantes</button>
+            </div>
+            <div class="blog-sort">
+                <span class="sort-label">Ordenar por:</span>
+                <select class="sort-select">
+                    <option value="recent">Más recientes</option>
+                    <option value="popular">Más populares</option>
+                    <option value="oldest">Más antiguos</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grid de artículos del blog -->
+        <div class="blog-grid">
+            <article class="blog-card">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg" alt="Conferencia Tecnológica" class="blog-card-image">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Eventos</span>
+                    <h3 class="blog-card-title">Conferencia Internacional de Tecnología e Innovación 2024</h3>
+                    <p class="blog-card-excerpt">El ITBA será sede de la prestigiosa conferencia que reunirá a expertos de todo el mundo para discutir las últimas tendencias en tecnología e innovación.</p>
+                    <div class="blog-card-meta">
+                        <div class="blog-card-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>12 Mayo, 2024</span>
+                        </div>
+                        <div class="blog-card-author">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Autor" class="blog-card-author-img">
+                            <span>Juan Pérez</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg" alt="Investigación" class="blog-card-image">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Investigación</span>
+                    <h3 class="blog-card-title">Nuevo laboratorio de inteligencia artificial abre sus puertas</h3>
+                    <p class="blog-card-excerpt">El ITBA inaugura un moderno laboratorio dedicado a la investigación en inteligencia artificial y aprendizaje automático, con equipamiento de última generación.</p>
+                    <div class="blog-card-meta">
+                        <div class="blog-card-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>10 Mayo, 2024</span>
+                        </div>
+                        <div class="blog-card-author">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Autor" class="blog-card-author-img">
+                            <span>María González</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg" alt="Estudiantes" class="blog-card-image">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Estudiantes</span>
+                    <h3 class="blog-card-title">Equipo de estudiantes gana competencia internacional de robótica</h3>
+                    <p class="blog-card-excerpt">Un grupo de estudiantes del ITBA se coronó campeón en la prestigiosa competencia internacional de robótica celebrada en Tokio, Japón.</p>
+                    <div class="blog-card-meta">
+                        <div class="blog-card-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>8 Mayo, 2024</span>
+                        </div>
+                        <div class="blog-card-author">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Autor" class="blog-card-author-img">
+                            <span>Carlos Rodríguez</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg" alt="Académico" class="blog-card-image">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Académico</span>
+                    <h3 class="blog-card-title">Nueva carrera de Ingeniería en Datos y Ciberseguridad</h3>
+                    <p class="blog-card-excerpt">El ITBA lanza una innovadora carrera que combina ciencia de datos y ciberseguridad para formar profesionales preparados para los desafíos digitales actuales.</p>
+                    <div class="blog-card-meta">
+                        <div class="blog-card-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>5 Mayo, 2024</span>
+                        </div>
+                        <div class="blog-card-author">
+                            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Autor" class="blog-card-author-img">
+                            <span>Ana Martínez</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2024/06/Fachada-SDT-1-1-1080x675.jpg" alt="Internacional" class="blog-card-image">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Internacional</span>
+                    <h3 class="blog-card-title">ITBA firma convenio con Universidad de Stanford</h3>
+                    <p class="blog-card-excerpt">Se firmó un importante acuerdo de cooperación académica con la Universidad de Stanford que permitirá intercambios de estudiantes y profesores.</p>
+                    <div class="blog-card-meta">
+                        <div class="blog-card-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>3 Mayo, 2024</span>
+                        </div>
+                        <div class="blog-card-author">
+                            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Autor" class="blog-card-author-img">
+                            <span>Roberto Sánchez</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/tech-trek-EI.jpg" alt="Institucional" class="blog-card-image">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Institucional</span>
+                    <h3 class="blog-card-title">ITBA celebra su 60° aniversario con semana de actividades especiales</h3>
+                    <p class="blog-card-excerpt">Con motivo del 60° aniversario de su fundación, el ITBA organiza una semana completa de actividades académicas, culturales y sociales.</p>
+                    <div class="blog-card-meta">
+                        <div class="blog-card-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>1 Mayo, 2024</span>
+                        </div>
+                        <div class="blog-card-author">
+                            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Autor" class="blog-card-author-img">
+                            <span>Laura López</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Paginación -->
+        <div class="blog-pagination">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn">4</button>
+            <button class="pagination-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/ITBA-logo3.

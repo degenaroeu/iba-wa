@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITBA - Instituto Tecnológico de Buenos Aires</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --color-primary: #0056b3;
+            --color-secondary: #008EBA;
+            --color-accent: #17a2b8;
+            --color-background: #f8f9fa;
+            --color-text: #333;
+            --color-text-light: #6c757d;
+            --transition: all 0.3s ease;
+            
+            /* Colores para el menú */
+            --color-menu-1: #011eff; /* Turquesa */
+            --color-menu-2: #008EBA; /* Gris */
+            --color-menu-3: #00BC6F; /* Naranja para Desarrollo Profesional */
+            --color-menu-4: #00B8FF; /* Púrpura */
+            --color-menu-5: #A200C9; /* Verde */
+            --color-menu-6: #D600FE; /* Naranja */
+            --color-menu-7: #FFB000; /* Rosa */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* CORRECCIÓN: Prevenir desplazamiento horizontal */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
+        }
+
+        .custom-icon {
+            width: 24px;       /* o el tamaño que necesites */
+            height: 24px;
+            filter: brightness(0) invert(1); /* Esto hace que la imagen se vea blanca */
+        }
+
+        /* Logo alineado a la izquierda */
+        .logo-container {
+            display: flex;
+            justify-content: space-between; /* Cambiado para acomodar el botón hamburguesa */
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: black; /* Cambiado de white a black */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            height: 35px; /* Logo más pequeño */
+            transition: var(--transition);
+            filter: brightness(0) invert(1); /* Invertir colores para que el logo sea blanco */
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* NUEVO: Botón hamburguesa para móviles */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: stretch;
+            height: 40px;
+        }
+
+        /* Nuevo estilo para el menú con submenús */
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a {
+            text-decoration: none;
+            font-size: 0.75rem; /* Texto más grande */
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            white-space: nowrap;
+            color: white; /* Texto blanco para todos */
+        }
+
+        /* Colores específicos para cada elemento del menú - ahora con fondo de color */
+        .nav-item:nth-child(1) > a {
+            background-color: var(--color-menu-1);
+        }
+        .nav-item:nth-child(2) > a {
+            background-color: var(--color-menu-2);
+        }
+        .nav-item:nth-child(3) > a {
+            background-color: var(--color-menu-3);
+        }
+        .nav-item:nth-child(4) > a {
+            background-color: var(--color-menu-4);
+        }
+        .nav-item:nth-child(5) > a {
+            background-color: var(--color-menu-5);
+        }
+        .nav-item:nth-child(6) > a {
+            background-color: var(--color-menu-6);
+        }
+        .nav-item:nth-child(7) > a {
+            background-color: var(--color-menu-7);
+        }
+
+        /* Hover para cada elemento del menú - ajustado para el nuevo estilo */
+        .nav-item:nth-child(1) > a:hover, .nav-item:nth-child(1):hover > a {
+            background-color: var(--color-menu-1);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(2) > a:hover, .nav-item:nth-child(2):hover > a {
+            background-color: var(--color-menu-2);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(3) > a:hover, .nav-item:nth-child(3):hover > a {
+            background-color: var(--color-menu-3);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(4) > a:hover, .nav-item:nth-child(4):hover > a {
+            background-color: var(--color-menu-4);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(5) > a:hover, .nav-item:nth-child(5):hover > a {
+            background-color: var(--color-menu-5);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(6) > a:hover, .nav-item:nth-child(6):hover > a {
+            background-color: var(--color-menu-6);
+            opacity: 0.9;
+        }
+        .nav-item:nth-child(7) > a:hover, .nav-item:nth-child(7):hover > a {
+            background-color: var(--color-menu-7);
+            opacity: 0.9;
+        }
+
+        /* Estilos para el submenú */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu-header {
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+            font-size: 0.8rem; /* Texto más grande */
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Colores para los encabezados de submenú */
+        .nav-item:nth-child(1) .submenu-header {
+            background-color: var(--color-menu-1);
+            color: white;
+        }
+        .nav-item:nth-child(2) .submenu-header {
+            background-color: var(--color-menu-2);
+            color: white;
+        }
+        .nav-item:nth-child(3) .submenu-header {
+            background-color: var(--color-menu-3);
+            color: white;
+        }
+        .nav-item:nth-child(4) .submenu-header {
+            background-color: var(--color-menu-4);
+            color: white;
+        }
+        .nav-item:nth-child(5) .submenu-header {
+            background-color: var(--color-menu-5);
+            color: white;
+        }
+        .nav-item:nth-child(6) .submenu-header {
+            background-color: var(--color-menu-6);
+            color: white;
+        }
+        .nav-item:nth-child(7) .submenu-header {
+            background-color: var(--color-menu-7);
+            color: white;
+        }
+
+        .submenu-item {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.8rem; /* Texto más grande */
+            transition: var(--transition);
+            display: block;
+            text-decoration: none;
+        }
+
+        /* Colores para los elementos del submenú */
+        .nav-item:nth-child(1) .submenu-item {
+            color: var(--color-menu-1);
+        }
+        .nav-item:nth-child(2) .submenu-item {
+            color: var(--color-menu-2);
+        }
+        .nav-item:nth-child(3) .submenu-item {
+            color: var(--color-menu-3);
+        }
+        .nav-item:nth-child(4) .submenu-item {
+            color: var(--color-menu-4);
+        }
+        .nav-item:nth-child(5) .submenu-item {
+            color: var(--color-menu-5);
+        }
+        .nav-item:nth-child(6) .submenu-item {
+            color: var(--color-menu-6);
+        }
+        .nav-item:nth-child(7) .submenu-item {
+            color: var(--color-menu-7);
+        }
+
+        /* Hover para los elementos del submenú */
+        .nav-item:nth-child(1) .submenu-item:hover {
+            background-color: rgba(78, 205, 196, 0.1);
+        }
+        .nav-item:nth-child(2) .submenu-item:hover {
+            background-color: rgba(108, 117, 125, 0.1);
+        }
+        .nav-item:nth-child(3) .submenu-item:hover {
+            background-color: rgba(126, 166, 224, 0.1);
+        }
+        .nav-item:nth-child(4) .submenu-item:hover {
+            background-color: rgba(161, 125, 195, 0.1);
+        }
+        .nav-item:nth-child(5) .submenu-item:hover {
+            background-color: rgba(181, 198, 137, 0.1);
+        }
+        .nav-item:nth-child(6) .submenu-item:hover {
+            background-color: rgba(248, 169, 120, 0.1);
+        }
+        .nav-item:nth-child(7) .submenu-item:hover {
+            background-color: rgba(229, 152, 155, 0.1);
+        }
+
+        /* MODIFICADO: Estilos para el submenú de dos columnas - ajustado para que no se salga de la pantalla */
+        .mega-submenu {
+            position: absolute;
+            top: 100%;
+            left: 0; /* Cambiado para que se posicione con JavaScript */
+            background: white;
+            width: 800px;
+            max-width: 90vw; /* Evitar que se salga de la pantalla */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+
+        .nav-item:hover .mega-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mega-submenu-header {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+            font-size: 0.9rem; /* Texto más grande */
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Colores para los encabezados de mega-submenú */
+        .nav-item:nth-child(1) .mega-submenu-header {
+            background-color: var(--color-menu-1);
+            color: white;
+        }
+        .nav-item:nth-child(2) .mega-submenu-header {
+            background-color: var(--color-menu-2);
+            color: white;
+        }
+        .nav-item:nth-child(3) .mega-submenu-header {
+            background-color: var(--color-menu-3);
+            color: white;
+        }
+        .nav-item:nth-child(4) .mega-submenu-header {
+            background-color: var(--color-menu-4);
+            color: white;
+        }
+        .nav-item:nth-child(5) .mega-submenu-header {
+            background-color: var(--color-menu-5);
+            color: white;
+        }
+        .nav-item:nth-child(6) .mega-submenu-header {
+            background-color: var(--color-menu-6);
+            color: white;
+        }
+        .nav-item:nth-child(7) .mega-submenu-header {
+            background-color: var(--color-menu-7);
+            color: white;
+        }
+
+        .mega-submenu-column {
+            width: 50%; /* Aseguramos que cada columna ocupe exactamente el 50% */
+            padding: 0 0.5rem;
+        }
+
+        .mega-submenu-column-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .mega-submenu-section {
+            margin-bottom: 1rem;
+        }
+
+        .mega-submenu-section-title {
+            font-weight: 600;
+            font-size: 0.85rem; /* Texto más grande */
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Colores para los títulos de sección */
+        .nav-item:nth-child(1) .mega-submenu-section-title {
+            color: var(--color-menu-1);
+            border-bottom-color: rgba(78, 205, 196, 0.3);
+        }
+        .nav-item:nth-child(2) .mega-submenu-section-title {
+            color: var(--color-menu-2);
+            border-bottom-color: rgba(108, 117, 125, 0.3);
+        }
+        .nav-item:nth-child(3) .mega-submenu-section-title {
+            color: var(--color-menu-3);
+            border-bottom-color: rgba(255, 176, 0, 0.3);
+        }
+        .nav-item:nth-child(4) .mega-submenu-section-title {
+            color: var(--color-menu-4);
+            border-bottom-color: rgba(161, 125, 195, 0.3);
+        }
+        .nav-item:nth-child(5) .mega-submenu-section-title {
+            color: var(--color-menu-5);
+            border-bottom-color: rgba(181, 198, 137, 0.3);
+        }
+        .nav-item:nth-child(6) .mega-submenu-section-title {
+            color: var(--color-menu-6);
+            border-bottom-color: rgba(248, 169, 120, 0.3);
+        }
+        .nav-item:nth-child(7) .mega-submenu-section-title {
+            color: var(--color-menu-7);
+            border-bottom-color: rgba(229, 152, 155, 0.3);
+        }
+
+        .mega-submenu-item {
+            padding: 0.3rem 0.5rem;
+            font-size: 0.75rem; /* Texto más grande */
+            transition: var(--transition);
+            display: block;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        /* Colores para los elementos del mega-submenú */
+        .nav-item:nth-child(1) .mega-submenu-item {
+            color: #000000; /* Negro para todos los elementos del submenu */
+        }
+        .nav-item:nth-child(2) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(3) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(4) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(5) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(6) .mega-submenu-item {
+            color: #000000;
+        }
+        .nav-item:nth-child(7) .mega-submenu-item {
+            color: #000000;
+        }
+
+        /* Hover para los elementos del mega-submenú */
+        .main-menu-item:nth-child(1) .mega-submenu-item:hover {
+            background-color: rgba(78, 205, 196, 0.1);
+        }
+        .main-menu-item:nth-child(2) .mega-submenu-item:hover {
+            background-color: rgba(108, 117, 125, 0.1);
+        }
+        .main-menu-item:nth-child(3) .mega-submenu-item:hover {
+            background-color: rgba(255, 176, 0, 0.1);
+        }
+        .main-menu-item:nth-child(4) .mega-submenu-item:hover {
+            background-color: rgba(161, 125, 195, 0.1);
+        }
+        .main-menu-item:nth-child(5) .mega-submenu-item:hover {
+            background-color: rgba(181, 198, 137, 0.1);
+        }
+        .main-menu-item:nth-child(6) .mega-submenu-item:hover {
+            background-color: rgba(248, 169, 120, 0.1);
+        }
+
+        /* Estilo para los submenús anidados */
+        .mega-submenu-subitem {
+            padding-left: 1rem;
+            font-size: 0.7rem;
+            color: #000000;
+            display: block;
+            text-decoration: none;
+            margin: 0.2rem 0;
+        }
+
+        .mega-submenu-subitem:hover {
+            text-decoration: underline;
+        }
+
+        .donate-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            height: 100%;
+            font-size: 0.75rem; /* Texto más grande */
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .donate-btn:hover {
+            background: var(--color-secondary);
+        }
+
+        .main-content {
+            display: flex;
+            padding: 2rem 5%;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        /* Nuevo estilo para el menú principal */
+        .main-menu-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 5%;
+            background-color: transparent;
+            margin-top: 1.5rem; /* Agregar margen superior para equilibrar con el logo */
+        }
+
+        .main-menu {
+            display: flex;
+            width: 100%;
+            height: auto; /* Altura automática para adaptarse al contenido */
+            gap: 10px; /* Separación entre elementos del menú */
+            align-items: stretch; /* Alinear elementos para que se estiren */
+        }
+
+        .main-menu-item {
+            flex: 1;
+            display: flex;
+            align-items: stretch; /* Permitir que se estire */
+            height: auto; /* Altura automática */
+            border-radius: 5px; /* Bordes redondeados para cada elemento */
+            position: relative; /* IMPORTANTE: Para posicionamiento del submenu */
+            /* ELIMINADO: overflow: hidden; - Esto estaba cortando el submenu */
+        }
+
+        /* Modificar los estilos del menú principal para centrar el contenido */
+        .main-menu-item > a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centrar verticalmente */
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem 0.5rem; /* Padding vertical aumentado */
+            transition: var(--transition);
+            line-height: 1.2;
+        }
+
+        /* Estilo para los iconos del menú - centrados */
+        .menu-icon {
+            width: 36px;
+            height: 36px;
+            stroke-width: 2;
+        }
+
+        /* Contenedor para alinear los iconos - centrado */
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px; /* Altura fija para todos los iconos */
+            margin-bottom: 12px; /* Espacio entre icono y texto */
+            width: 100%; /* Asegurar que ocupe todo el ancho */
+        }
+
+        .main-menu-item:nth-child(1) > a {
+            background-color: var(--color-menu-1);
+        }
+        .main-menu-item:nth-child(2) > a {
+            background-color: var(--color-menu-2);
+        }
+        .main-menu-item:nth-child(3) > a {
+            background-color: var(--color-menu-3); /* Cambiado a FFB000 */
+        }
+        .main-menu-item:nth-child(4) > a {
+            background-color: var(--color-menu-4);
+        }
+        .main-menu-item:nth-child(5) > a {
+            background-color: var(--color-menu-5);
+        }
+        .main-menu-item:nth-child(6) > a {
+            background-color: var(--color-menu-6);
+        }
+        .main-menu-item:nth-child(7) > a {
+            background-color: var(--color-menu-7);
+        }
+        .main-menu-item > a:hover {
+            opacity: 0.9;
+        }
+
+        /* MODIFICADO: Estilos específicos para el mega-submenu en el menú principal - ajustado para que no se salga de la pantalla */
+        .main-menu-item .mega-submenu {
+            position: absolute;
+            top: 100%;
+            left: 0; /* Cambiado para que se posicione con JavaScript */
+            width: 800px;
+            max-width: 90vw; /* Evitar que se salga de la pantalla */
+            z-index: 9999; /* Valor alto para asegurar que esté por encima de todo */
+            display: flex; /* Aseguramos que sea flex */
+            flex-wrap: wrap; /* Permitimos que los elementos se envuelvan */
+        }
+
+        /* MODIFICADO: Mostrar el mega-submenu al hacer hover en el elemento del menú principal */
+        .main-menu-item:hover .mega-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Colores para los encabezados de mega-submenú en el menú principal */
+        .main-menu-item:nth-child(1) .mega-submenu-header {
+            background-color: var(--color-menu-1);
+            color: white;
+        }
+        .main-menu-item:nth-child(2) .mega-submenu-header {
+            background-color: var(--color-menu-2);
+            color: white;
+        }
+        .main-menu-item:nth-child(3) .mega-submenu-header {
+            background-color: var(--color-menu-3);
+            color: white;
+        }
+        .main-menu-item:nth-child(4) .mega-submenu-header {
+            background-color: var(--color-menu-4);
+            color: white;
+        }
+        .main-menu-item:nth-child(5) .mega-submenu-header {
+            background-color: var(--color-menu-5);
+            color: white;
+        }
+        .main-menu-item:nth-child(6) .mega-submenu-header {
+            background-color: var(--color-menu-6);
+            color: white;
+        }
+
+        /* Colores para los títulos de sección en el menú principal */
+        .main-menu-item:nth-child(1) .mega-submenu-section-title {
+            color: var(--color-menu-1);
+            border-bottom-color: rgba(78, 205, 196, 0.3);
+        }
+        .main-menu-item:nth-child(2) .mega-submenu-section-title {
+            color: var(--color-menu-2);
+            border-bottom-color: rgba(108, 117, 125, 0.3);
+        }
+        .main-menu-item:nth-child(3) .mega-submenu-section-title {
+            color: var(--color-menu-3);
+            border-bottom-color: rgba(255, 176, 0, 0.3);
+        }
+        .main-menu-item:nth-child(4) .mega-submenu-section-title {
+            color: var(--color-menu-4);
+            border-bottom-color: rgba(161, 125, 195, 0.3);
+        }
+        .main-menu-item:nth-child(5) .mega-submenu-section-title {
+            color: var(--color-menu-5);
+            border-bottom-color: rgba(181, 198, 137, 0.3);
+        }
+        .main-menu-item:nth-child(6) .mega-submenu-section-title {
+            color: var(--color-menu-6);
+            border-bottom-color: rgba(248, 169, 120, 0.3);
+        }
+
+        .carousel-container {
+            width: 70%;
+            height: 65vh; /* AJUSTADO: altura del carrusel */
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-size: cover;
+            background-position: unset;
+            padding: 4rem 5%;
+            background-blend-mode: darken; 
+            background-color: transparent; 
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-video-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .carousel-video-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-video-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            z-index: 3;
+        }
+
+        .carousel-content {
+            max-width: 800px;
+            color: white;
+            text-shadow: none;
+            padding: 2rem;
+            background-color: transparent; 
+            border-radius: 10px; 
+        }
+
+        .carousel-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .carousel-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Controles del carrusel */
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .carousel-arrows {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            pointer-events: auto;
+        }
+
+        .carousel-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+
+        .carousel-arrow.next {
+            right: 20px;
+        }
+
+        /* MODIFICADO: Ajustado para que tenga la misma altura que el carrusel y eliminado el scroll */
+        .events-timeline {
+            width: 30%;
+            height: 65vh; /* AJUSTADO: Misma altura que el carrusel */
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow-y: hidden; /* MODIFICADO: Eliminado el scroll */
+            align-self: flex-start;
+            position: sticky;
+            top: 90px;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .timeline-event {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 1.5rem;
+            border-left: 2px solid var(--color-accent);
+        }
+
+        .timeline-event:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .event-date {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-location {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-more-btn {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+        .event-more-btn:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .content-wrapper {
+            max-width: none; /* Updated max-width */
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* MODIFICADO: Cambiado el fondo del buscador a gris */
+        .search-bar {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #f0f0f0; /* Cambiado de white a gris claro */
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+        }
+
+        .search-bar:focus-within {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-icon {
+            color: var(--color-secondary);
+            margin-right: 0.5rem;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            font-size: 1rem;
+            padding: 0.5rem;
+            outline: none;
+            background: transparent; /* Fondo transparente para que se vea el gris */
+        }
+
+        .search-link {
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-link:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .latest-news-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: none; /* Updated max-width */
+            margin: 4rem auto;
+            width: 100%; /* Updated width */
+        }
+
+        .news-cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Updated grid-template-columns */
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .news-description {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .news-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .news-link:hover {
+            color: var(--color-primary);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+            text-align: center;
+        }
+
+        footer {
+            background-color: #0a0f1c;
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        .footer-logo img {
+            filter: brightness(0) invert(1);
+            max-width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .footer-logo img:hover {
+            opacity: 0.8;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            line-height: 2;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        /* NUEVO: Estilos para el menú móvil */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            padding: 2rem 1rem;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        .mobile-menu-item {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 600;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-link:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .mobile-menu-icon {
+            margin-right: 1rem;
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-submenu {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .mobile-submenu.active {
+            display: block;
+        }
+
+        .mobile-submenu-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-submenu-link {
+            display: block;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-submenu-link:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .mobile-menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .mobile-menu-toggle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active .mobile-menu-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 1200px) {
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-logo {
+                grid-column: 1 / -1;
+                justify-self: center;
+                margin-bottom: 2rem;
+            }
+            .mega-submenu {
+                width: 600px;
+            }
+            
+            /* Ajuste para el mega-submenu en el menú principal en pantallas medianas */
+            .main-menu-item .mega-submenu {
+                width: 600px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .carousel-container, .events-timeline {
+                width: 100%;
+            }
+
+            .events-timeline {
+                height: auto;
+                max-height: 50vh;
+                position: static;
+            }
+            .news-cards-container { /* Added media query for smaller screens */
+                grid-template-columns: 1fr;
+            }
+            
+            /* Ajustes para el menú en pantallas medianas */
+            .nav-links {
+                gap: 0;
+            }
+            
+            .nav-item > a {
+                font-size: 0.7rem; /* Texto más grande en responsive */
+                padding: 0 0.5rem;
+            }
+            
+            .mega-submenu {
+                width: 500px;
+            }
+            
+            .mega-submenu-column {
+                width: 50%;
+            }
+            
+            /* Ajustes para el menú principal en pantallas medianas */
+            .main-menu {
+                gap: 5px;
+            }
+            
+            .main-menu-item > a {
+                font-size: 1rem;
+                padding: 0.75rem 0.25rem;
+            }
+            
+            .menu-icon {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 8px;
+            }
+            
+            /* Ajuste para el mega-submenu en el menú principal en pantallas medianas */
+            .main-menu-item .mega-submenu {
+                width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* NUEVO: Mostrar botón hamburguesa y ocultar menú principal */
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .main-menu-container {
+                display: none;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            .carousel-title {
+                font-size: 2rem;
+            }
+            .carousel-subtitle {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .search-bar {
+                margin: 2rem 1rem;
+                width: auto;
+                padding: 0.5rem;
+            }
+
+            .search-input {
+                width: 100%;
+                min-width: 0;
+                margin-right: 0.5rem;
+            }
+
+            .search-link {
+                white-space: nowrap;
+                padding: 0.7rem 1rem;
+            }
+            
+            /* Ajuste para el menú principal en pantallas pequeñas */
+            .main-menu-item > a {
+                flex-direction: row;
+                justify-content: center; /* Centrar horizontalmente */
+                align-items: center; /* Centrar verticalmente */
+                padding: 0.75rem;
+            }
+            
+            .icon-container {
+                margin-bottom: 0;
+                margin-right: 8px;
+                height: auto;
+                width: auto; /* Ajustar ancho para modo móvil */
+            }
+            
+            .main-menu {
+                flex-direction: column;
+                height: auto;
+                gap: 5px;
+            }
+            
+            .main-menu-item {
+                height: auto;
+            }
+            
+            .main-menu-item > a {
+                font-size: 0.95rem;
+                flex-direction: row;
+                padding: 0.75rem;
+            }
+            
+            .icon-container {
+                margin-bottom: 0;
+                margin-right: 8px;
+                height: auto;
+            }
+            
+            .menu-icon {
+                width: 28px;
+                height: 28px;
+                margin-bottom: 0;
+            }
+            
+            /* Ajuste para el logo en pantallas pequeñas */
+            .logo {
+                height: 40px;
+            }
+            
+            /* Ajuste para el mega-submenu en el menú principal en pantallas pequeñas */
+            .main-menu-item .mega-submenu {
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 0;
+                height: 0;
+                visibility: hidden;
+                padding: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .main-menu-item:hover .mega-submenu {
+                opacity: 1;
+                visibility: visible;
+                height: auto;
+                padding: 1rem;
+                transform: none;
+            }
+            
+            .mega-submenu-column {
+                width: 100%;
+                padding: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .search-bar {
+                margin: 2rem 1rem;
+                width: calc(100% - 2rem);
+                box-sizing: border-box;
+            }
+            .latest-news-section {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo alineado a la izquierda -->
+    <div class="logo-container">
+        <img src="/Users/estebandegenaro/Downloads/ITBA_ITBAAlumnos_Identidad_Logos-02-1.png" alt="ITBA Logo" class="logo">
+        <!-- NUEVO: Botón hamburguesa para móviles -->
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    
+    <!-- NUEVO: Menú móvil -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="infoSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-1.png" class="mobile-menu-icon" alt="Info ITBA">
+                    Info ITBA
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="infoSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información Académica</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Experiencia Académica</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Normativas</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Becas y Préstamos</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="tramitesSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-2.png" class="mobile-menu-icon" alt="Trámites y Servicios">
+                    Trámites y Servicios
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="tramitesSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Servicios</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información Administrativa</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Espacios</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="bienestarSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-6.png" class="mobile-menu-icon" alt="Bienestar y Tutorías">
+                    Bienestar y Tutorías
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="bienestarSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Bienestar Estudiantil</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Tutorías</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="primerAnoSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-7.png" class="mobile-menu-icon" alt="Estudiantes Primer Año">
+                    Estudiantes Primer Año
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="primerAnoSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información Básica</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Recursos</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="iniciativasSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-4.png" class="mobile-menu-icon" alt="Iniciativas Estudiantiles">
+                    Iniciativas Estudiantiles
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="iniciativasSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Grupos Estudiantiles</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Participación</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="movilidadSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-3.png" class="mobile-menu-icon" alt="Movilidad Internacional">
+                    Movilidad Internacional
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="movilidadSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Programas</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Información</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-item">
+            <button class="mobile-menu-toggle" data-target="desarrolloSubmenu">
+                <div class="mobile-menu-link">
+                    <img src="https://itba-web-alumnos.vercel.app/image-5.png" class="mobile-menu-icon" alt="Desarrollo Profesional">
+                    Desarrollo Profesional
+                </div>
+                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
+            </button>
+            <div class="mobile-submenu" id="desarrolloSubmenu">
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Carrera Profesional</a>
+                </div>
+                <div class="mobile-submenu-item">
+                    <a href="#" class="mobile-submenu-link">Recursos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Nuevo menú principal con iconos y separación -->
+    <div class="main-menu-container">
+        <div class="main-menu">
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-1.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Info ITBA
+                </a>
+                <!-- Nuevo submenu desplegable para Info ITBA con dos columnas principales -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Información ITBA</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Académica</div>
+                            <a href="#" class="mega-submenu-item">Matriculaciones</a>
+                            <div class="mega-submenu-subitem">- Materias</div>
+                            <div class="mega-submenu-subitem">- PPS</div>
+                            <div class="mega-submenu-subitem">- SAT</div>
+                            <a href="#" class="mega-submenu-item">Exámenes Finales</a>
+                            <a href="#" class="mega-submenu-item">Validación inglés</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Experiencia Académica</div>
+                            <a href="#" class="mega-submenu-item">Ayudantías</a>
+                            <a href="#" class="mega-submenu-item">Tareas para la Universidad</a>
+                            <a href="#" class="mega-submenu-item">Investigaciones</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Normativas</div>
+                            <a href="#" class="mega-submenu-item">Boletín General</a>
+                            <a href="#" class="mega-submenu-item">Reglamentaciones</a>
+                            <a href="#" class="mega-submenu-item">Política de Préstamo de Activos</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Becas y Préstamos</div>
+                            <a href="#" class="mega-submenu-item">Becas y Prestamos de honor</a>
+                            <a href="#" class="mega-submenu-item">Planes de estudio</a>
+                            <a href="#" class="mega-submenu-item">Grillas</a>
+                            <a href="#" class="mega-submenu-item">Calendario académico</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-2.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Tramites y Servicios
+                </a>
+                <!-- Nuevo submenu desplegable para Trámites y Servicios con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Trámites y Servicios</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Servicios</div>
+                            <a href="#" class="mega-submenu-item">Service Point</a>
+                            <div class="mega-submenu-subitem">- Servicio que ofrece</div>
+                            <div class="mega-submenu-subitem">- Horarios</div>
+                            <a href="#" class="mega-submenu-item">Préstamos</a>
+                            <div class="mega-submenu-subitem">- Lockers</div>
+                            <div class="mega-submenu-subitem">- Computadoras</div>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Espacios</div>
+                            <a href="#" class="mega-submenu-item">Reserva TuEspacioITBA</a>
+                            <a href="#" class="mega-submenu-item">Aulas libres</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Administrativa</div>
+                            <a href="#" class="mega-submenu-item">Certificaciones</a>
+                            <a href="#" class="mega-submenu-item">Documentación Obligatoria</a>
+                            <a href="#" class="mega-submenu-item">Facturación</a>
+                            <a href="#" class="mega-submenu-item">Inhibiciones</a>
+                            <a href="#" class="mega-submenu-item">Graduaciones</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Otros Servicios</div>
+                            <a href="#" class="mega-submenu-item">Impresión</a>
+                            <a href="#" class="mega-submenu-item">Impresión 3D</a>
+                            <a href="#" class="mega-submenu-item">Kit Festejo Responsable</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-6.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Bienestar y Tutorias
+                </a>
+                <!-- Submenu para Bienestar y Tutorías con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Bienestar y Tutorías</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Bienestar Estudiantil</div>
+                            <a href="#" class="mega-submenu-item">Apoyo Psicológico</a>
+                            <a href="#" class="mega-submenu-item">Actividades Recreativas</a>
+                            <a href="#" class="mega-submenu-item">Deportes</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Tutorías</div>
+                            <a href="#" class="mega-submenu-item">Programa de Tutorías</a>
+                            <a href="#" class="mega-submenu-item">Solicitar Tutor</a>
+                            <a href="#" class="mega-submenu-item">Ser Tutor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-7.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Estudiantes Primer Año
+                </a>
+                <!-- Submenu para Estudiantes Primer Año con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Estudiantes de Primer Año</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Básica</div>
+                            <a href="#" class="mega-submenu-item">Guía de Inicio</a>
+                            <a href="#" class="mega-submenu-item">Calendario Académico</a>
+                            <a href="#" class="mega-submenu-item">Materias Iniciales</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Recursos</div>
+                            <a href="#" class="mega-submenu-item">Tutorías para Ingresantes</a>
+                            <a href="#" class="mega-submenu-item">Preguntas Frecuentes</a>
+                            <a href="#" class="mega-submenu-item">Contactos Útiles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-4.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Iniciativas Estudiantiles
+                </a>
+                <!-- Submenu para Iniciativas Estudiantiles con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Iniciativas Estudiantiles</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Grupos Estudiantiles</div>
+                            <a href="#" class="mega-submenu-item">Clubes y Asociaciones</a>
+                            <a href="#" class="mega-submenu-item">Proyectos Estudiantiles</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Participación</div>
+                            <a href="#" class="mega-submenu-item">Crear una Iniciativa</a>
+                            <a href="#" class="mega-submenu-item">Financiamiento</a>
+                            <a href="#" class="mega-submenu-item">Eventos Estudiantiles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-3.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Movilidad Internacional
+                </a>
+                <!-- Submenu para Movilidad Internacional con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Movilidad Internacional</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Programas</div>
+                            <a href="#" class="mega-submenu-item">Intercambios Académicos</a>
+                            <a href="#" class="mega-submenu-item">Doble Titulación</a>
+                            <a href="#" class="mega-submenu-item">Pasantías Internacionales</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información</div>
+                            <a href="#" class="mega-submenu-item">Universidades Asociadas</a>
+                            <a href="#" class="mega-submenu-item">Requisitos</a>
+                            <a href="#" class="mega-submenu-item">Becas Internacionales</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="icon-container">
+                        <img src="https://itba-web-alumnos.vercel.app/image-5.png" class="menu-icon custom-icon" alt="Custom Icon">
+                    </div>
+                    Desarrollo Profesional
+                </a>
+                <!-- Submenu para Desarrollo Profesional con dos columnas -->
+                <div class="mega-submenu">
+                    <div class="mega-submenu-header">Desarrollo Profesional</div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Carrera Profesional</div>
+                            <a href="#" class="mega-submenu-item">Bolsa de Trabajo</a>
+                            <a href="#" class="mega-submenu-item">Pasantías</a>
+                            <a href="#" class="mega-submenu-item">Prácticas Profesionales</a>
+                        </div>
+                    </div>
+                    <div class="mega-submenu-column">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Recursos</div>
+                            <a href="#" class="mega-submenu-item">Talleres de CV</a>
+                            <a href="#" class="mega-submenu-item">Entrevistas Simuladas</a>
+                            <a href="#" class="mega-submenu-item">Networking</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="carousel-container">
+            <div class="carousel">
+                <!-- Slide 1 - Imagen -->
+                <div class="carousel-slide active" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_1.png');">
+                    <div class="carousel-content">
+                    </div>
+                </div>
+                
+                <!-- Slide 2 - Imagen -->
+                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_2.png');">
+                    <div class="carousel-content">
+                    </div>
+                </div>
+                
+                <!-- Slide 3 - Imagen -->
+                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_3.jpg');">
+                    <div class="carousel-content">
+                    </div>
+                </div>
+                
+                <!-- Slide 4 - Video -->
+                <div class="carousel-video-slide">
+                    <video autoplay muted>
+                        <source src="https://itba-web-alumnos.vercel.app/video.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                    <div class="carousel-video-content">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles del carrusel -->
+            <div class="carousel-controls">
+                <div class="carousel-dot active" data-slide="0"></div>
+                <div class="carousel-dot" data-slide="1"></div>
+                <div class="carousel-dot" data-slide="2"></div>
+                <div class="carousel-dot" data-slide="3"></div>
+            </div>
+            
+            <div class="carousel-arrows">
+                <div class="carousel-arrow prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="carousel-arrow next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="events-timeline">
+            <h3 class="timeline-title">Fechas Importantes</h3>
+            <div class="timeline-event">
+                <div class="event-date">6 de Mayo</div>
+                <h4 class="event-title">ITBA Global Day</h4>
+            </div>
+            <div class="timeline-event">
+                <div class="event-date">7 de Mayo</div>
+                <h4 class="event-title">SynAck. Charla con Octavio Serpe: Ingeniero Informático en MercadoLibre</h4>
+            </div>
+            <div class="timeline-event">
+                <div class="event-date">9 de Mayo</div>
+                <h4 class="event-title">SDF - ASME Simulación Avanzada en Estimulación Hidráulica: El Rol de la Mecánica Computacional.</h4>
+            </div>
+            <div class="timeline-event">
+                <div class="event-date">9 y 10 de Mayo</div>
+                <h4 class="event-title">SDT Auditorio - Trama AgroConnect</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="search-input" placeholder="¿Qué estás buscando?">
+            <a href="#" class="search-link">Buscar</a>
+        </div>
+
+        <section class="latest-news-section">
+            <h2 class="section-title">Última información</h2>
+            <div class="news-cards-container">  
+                <article class="news-card">
+                    <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/tech-trek-EI.jpg" alt="International Experience" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Lorem Ipsum Placeholder</h3>
+                        <p class="news-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <a href="#" class="news-link">Leer más →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://www.itba.edu.ar/wp-content/uploads/2024/06/Fachada-SDT-1-1-1080x675.jpg" alt="Advertising and Media" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Lorem Ipsum Placeholder</h3>
+                        <p class="news-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <a href="#" class="news-link">Leer más →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg" alt="New Campus" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Lorem Ipsum Placeholder</h3>
+                        <p class="news-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <a href="#" class="news-link">Leer más →</a>
+                    </div>
+                </article>
+            </div>  
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/ITBA-logo3.png" alt="ITBA Logo">
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Somos ITBA</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.itba.edu.ar/la-universidad/institucional/" class="footer-link">Institucional</a></li>
+                    <li><a href="#" class="footer-link">Autoridades</a></li>
+                    <li><a href="#" class="footer-link">Docentes</a></li>
+                    <li><a href="#" class="footer-link">Graduados</a></li>
+                    <li><a href="#" class="footer-link">Empleos y pasantías</a></li>
+                    <li><a href="#" class="footer-link">Experiencia ITBA</a></li>
+                    <li><a href="#" class="footer-link">Sedes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Oferta Académica</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Grado</a></li>
+                    <li><a href="#" class="footer-link">Postgrado</a></li>
+                    <li><a href="#" class="footer-link">Educación ejecutiva</a></li>
+                    <li><a href="#" class="footer-link">Doctorado</a></li>
+                    <li><a href="#" class="footer-link">Servicios Corporativos</a></li>
+                    <li><a href="#" class="footer-link">ITBA global</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Becas</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Ingreso Ingenierías</a></li>
+                    <li><a href="#" class="footer-link">Ingreso Licenciaturas</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Investigación y desarrollo</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Extensión</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Campus</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Intranet</a></li>
+                    <li><a href="#" class="footer-link">Biblioteca</a></li>
+                    <li><a href="#" class="footer-link">Noticias</a></li>
+                    <li><a href="#" class="footer-link">Trabajá con nosotros</a></li>
+                    <li><a href="#" class="footer-link">Portal de Compras</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.carousel-slide, .carousel-video-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.querySelector('.carousel-arrow.prev');
+        const nextBtn = document.querySelector('.carousel-arrow.next');
+    
+        let currentIndex = 0;
+        let slideInterval = setInterval(nextSlide, 5000); // 5 segundos
+    
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                const isActive = i === index;
+                slide.classList.toggle('active', isActive);
+
+                // Pausar todos los videos que no están activos
+                const video = slide.querySelector('video');
+                if (video) {
+                    if (isActive) {
+                        video.currentTime = 0;
+                        video.play();
+
+                        // Solo agregar un event listener si aún no lo tiene
+                        if (!video.hasAttribute('data-listener-added')) {
+                            video.addEventListener('ended', () => {
+                                nextSlide();
+                            });
+                            video.setAttribute('data-listener-added', 'true');
+                        }
+                    } else {
+                        video.pause();
+                    }
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentIndex = index;
+        }
+    
+        function nextSlide() {
+            let nextIndex = (currentIndex + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+    
+        function prevSlide() {
+            let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(prevIndex);
+        }
+    
+        // Dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval); // reinicia el temporizador si el usuario interactúa
+                showSlide(index);
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        });
+    
+        // Arrows
+        nextBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            nextSlide();
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+    
+        prevBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            prevSlide();
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // NUEVO: Funcionalidad para el menú móvil
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuToggles = document.querySelectorAll('.mobile-menu-toggle');
+        
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        mobileMenuClose.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        mobileMenuOverlay.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        mobileMenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const targetId = toggle.getAttribute('data-target');
+                const targetSubmenu = document.getElementById(targetId);
+                
+                // Cerrar todos los submenús
+                document.querySelectorAll('.mobile-submenu').forEach(submenu => {
+                    if (submenu.id !== targetId) {
+                        submenu.classList.remove('active');
+                    }
+                });
+                
+                document.querySelectorAll('.mobile-menu-toggle').forEach(btn => {
+                    if (btn !== toggle) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Abrir/cerrar el submenú actual
+                targetSubmenu.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+
+        // NUEVO: Función para posicionar correctamente los submenús
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.main-menu-item');
+            
+            menuItems.forEach(item => {
+                const submenu = item.querySelector('.mega-submenu');
+                if (!submenu) return;
+                
+                item.addEventListener('mouseenter', () => {
+                    // Obtener dimensiones y posiciones
+                    const itemRect = item.getBoundingClientRect();
+                    const submenuRect = submenu.getBoundingClientRect();
+                    const windowWidth = window.innerWidth;
+                    
+                    // Calcular si el submenú se sale por la izquierda o derecha
+                    let newLeft = 0;
+                    
+                    // Si es el primer elemento, alinear a la izquierda
+                    if (item === menuItems[0]) {
+                        newLeft = 0;
+                    } 
+                    // Si es el último elemento, alinear a la derecha
+                    else if (item === menuItems[menuItems.length - 1]) {
+                        newLeft = itemRect.width - submenuRect.width;
+                    } 
+                    // Para los elementos del medio, centrar
+                    else {
+                        newLeft = (itemRect.width - submenuRect.width) / 2;
+                    }
+                    
+                    // Verificar si se sale por la izquierda
+                    const leftEdge = itemRect.left + newLeft;
+                    if (leftEdge < 0) {
+                        newLeft = newLeft - leftEdge;
+                    }
+                    
+                    // Verificar si se sale por la derecha
+                    const rightEdge = itemRect.left + newLeft + submenuRect.width;
+                    if (rightEdge > windowWidth) {
+                        newLeft = newLeft - (rightEdge - windowWidth);
+                    }
+                    
+                    // Aplicar la posición calculada
+                    submenu.style.left = `${newLeft}px`;
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
