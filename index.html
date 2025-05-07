@@ -1218,7 +1218,7 @@
             .main-menu-container {
                 display: block; /* Mostrar contenedor del menú principal */
                 margin-top: 0;
-                padding: 0 15px; /* Añadir padding horizontal */
+                padding: 0 5%; /* MODIFICACIÓN: Añadir padding horizontal del 5% */
                 text-align: center; /* NUEVO: Centrar todo el contenido */
             }
             
@@ -1228,22 +1228,25 @@
                 padding: 15px 0; /* Añadir padding vertical */
                 align-items: center; /* NUEVO: Centrar elementos */
                 width: 100%; /* NUEVO: Asegurar que ocupe todo el ancho */
-                max-width: 400px; /* NUEVO: Limitar ancho máximo */
+                max-width: 100%; /* MODIFICACIÓN: Asegurar que ocupe todo el ancho disponible */
                 margin: 0 auto; /* NUEVO: Centrar horizontalmente */
             }
             
             .main-menu-item {
                 width: 100%;
-                border-radius: 8px; /* Bordes más redondeados */
+                /* MODIFICACIÓN 1: Quitar bordes redondeados */
+                border-radius: 0px;
                 overflow: hidden; /* Asegurar que los bordes redondeados se apliquen */
                 margin-bottom: 5px; /* Espacio adicional entre elementos */
-                max-width: 90%; /* NUEVO: Limitar ancho para mejor estética */
+                /* MODIFICACIÓN 2: Aumentar ancho para que coincida con el carrusel */
+                max-width: 100%;
             }
             
             .main-menu-item > a {
                 flex-direction: row; /* Iconos y texto en línea */
                 justify-content: center; /* MODIFICADO: Centrar contenido */
-                padding: 12px 15px; /* Padding más generoso */
+                /* MODIFICACIÓN 3: Aumentar ligeramente el alto del menú */
+                padding: 15px 15px;
                 font-size: 0.95rem; /* Texto ligeramente más grande */
                 text-align: center; /* NUEVO: Asegurar que el texto esté centrado */
             }
@@ -1274,9 +1277,9 @@
                 width: 100%;
             }
             
-            /* NUEVO: Forzar ajuste de imágenes en carrusel móvil */
+            /* MODIFICACIÓN: Corregir visualización de imágenes en carrusel para móvil */
             .carousel-slide {
-                background-size: contain !important; /* Forzar que la imagen se ajuste completamente */
+                background-size: cover !important; /* Cambiar a contain para que se vean completas */
                 background-repeat: no-repeat !important;
                 background-position: center center !important;
                 background-color: #000 !important; /* Fondo negro para las imágenes */
@@ -1322,11 +1325,11 @@
         @media (max-width: 480px) {
             /* Ajustes adicionales para pantallas muy pequeñas */
             .main-menu-container {
-                padding: 0 10px; /* Reducir padding en pantallas muy pequeñas */
+                padding: 0 5%; /* MODIFICACIÓN: Mantener el padding del 5% en pantallas muy pequeñas */
             }
             
             .main-menu-item > a {
-                padding: 10px 12px; /* Reducir padding en pantallas muy pequeñas */
+                padding: 15px 12px; /* Mantener el padding vertical aumentado */
                 font-size: 0.9rem; /* Texto ligeramente más pequeño */
             }
             
