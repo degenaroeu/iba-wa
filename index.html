@@ -595,23 +595,24 @@
             color: white;
         }
 
-        /* MODIFICADO: Ajuste del carrusel para dispositivos móviles */
-        .carousel-container {
+        /* CARRUSEL PARA DESKTOP */
+        .desktop-carousel-container {
             width: 70%;
             height: 65vh; /* altura del carrusel */
             position: relative;
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block; /* Mostrar por defecto */
         }
 
-        .carousel {
+        .desktop-carousel {
             width: 100%;
             height: 100%;
             position: relative;
         }
 
-        .carousel-slide {
+        .desktop-carousel-slide {
             position: absolute;
             top: 0;
             left: 0;
@@ -623,18 +624,18 @@
             flex-direction: column;
             justify-content: center;
             background-size: cover;
-            background-position: center; /* Cambiado a center para mejor visualización en móvil */
+            background-position: center;
             padding: 4rem 5%;
             background-blend-mode: darken; 
             background-color: transparent; 
         }
 
-        .carousel-slide.active {
+        .desktop-carousel-slide.active {
             opacity: 1;
             z-index: 2;
         }
 
-        .carousel-video-slide {
+        .desktop-carousel-video-slide {
             position: absolute;
             top: 0;
             left: 0;
@@ -645,18 +646,18 @@
             z-index: 1;
         }
 
-        .carousel-video-slide.active {
+        .desktop-carousel-video-slide.active {
             opacity: 1;
             z-index: 2;
         }
 
-        .carousel-video-slide video {
+        .desktop-carousel-video-slide video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .carousel-video-content {
+        .desktop-carousel-video-content {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -667,7 +668,7 @@
             z-index: 3;
         }
 
-        .carousel-content {
+        .desktop-carousel-content {
             max-width: 800px;
             color: white;
             text-shadow: none;
@@ -676,38 +677,8 @@
             border-radius: 10px; 
         }
 
-        .carousel-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .carousel-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .carousel-btn {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            display: inline-block;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .carousel-btn:hover {
-            background: var(--color-secondary);
-            transform: translateY(-3px);
-        }
-
-        /* Controles del carrusel */
-        .carousel-controls {
+        /* Controles del carrusel desktop */
+        .desktop-carousel-controls {
             position: absolute;
             bottom: 20px;
             left: 0;
@@ -718,7 +689,7 @@
             z-index: 10;
         }
 
-        .carousel-dot {
+        .desktop-carousel-dot {
             width: 12px;
             height: 12px;
             background-color: rgba(255, 255, 255, 0.5);
@@ -727,12 +698,12 @@
             transition: var(--transition);
         }
 
-        .carousel-dot.active {
+        .desktop-carousel-dot.active {
             background-color: white;
             transform: scale(1.2);
         }
 
-        .carousel-arrows {
+        .desktop-carousel-arrows {
             position: absolute;
             top: 0;
             left: 0;
@@ -742,7 +713,7 @@
             pointer-events: none;
         }
 
-        .carousel-arrow {
+        .desktop-carousel-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -759,16 +730,141 @@
             pointer-events: auto;
         }
 
-        .carousel-arrow:hover {
+        .desktop-carousel-arrow:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .carousel-arrow.prev {
+        .desktop-carousel-arrow.prev {
             left: 20px;
         }
 
-        .carousel-arrow.next {
+        .desktop-carousel-arrow.next {
             right: 20px;
+        }
+
+        /* NUEVO CARRUSEL PARA MÓVIL */
+        .mobile-carousel-container {
+            width: 100%;
+            height: 300px; /* Altura fija para móvil */
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: none; /* Oculto por defecto */
+            margin-bottom: 20px;
+        }
+
+        .mobile-carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .mobile-carousel-slide {
+            position: relative; /* Cambiado a relative */
+            width: 100%;
+            height: 100%;
+            display: none; /* Oculto por defecto */
+        }
+
+        .mobile-carousel-slide.active {
+            display: block; /* Mostrar cuando está activo */
+        }
+
+        .mobile-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Asegurar que la imagen se vea completa */
+            background-color: #000; /* Fondo negro para las imágenes */
+        }
+
+        .mobile-carousel-video-slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: none; /* Oculto por defecto */
+        }
+
+        .mobile-carousel-video-slide.active {
+            display: block; /* Mostrar cuando está activo */
+        }
+
+        .mobile-carousel-video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mobile-carousel-video-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            z-index: 3;
+        }
+
+        /* Controles del carrusel móvil */
+        .mobile-carousel-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .mobile-carousel-dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .mobile-carousel-arrows {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .mobile-carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            pointer-events: auto;
+        }
+
+        .mobile-carousel-arrow.prev {
+            left: 10px;
+        }
+
+        .mobile-carousel-arrow.next {
+            right: 10px;
         }
 
         /* MODIFICADO: Ajustado para que tenga la misma altura que el carrusel y eliminado el scroll */
@@ -1154,7 +1250,7 @@
                 flex-direction: column;
             }
 
-            .carousel-container, .events-timeline {
+            .desktop-carousel-container, .events-timeline {
                 width: 100%;
             }
 
@@ -1209,6 +1305,15 @@
         }
 
         @media (max-width: 768px) {
+            /* Mostrar carrusel móvil y ocultar carrusel desktop */
+            .desktop-carousel-container {
+                display: none;
+            }
+            
+            .mobile-carousel-container {
+                display: block;
+            }
+            
             /* Eliminar completamente el botón de menú móvil */
             .mobile-menu-toggle {
                 display: none;
@@ -1271,18 +1376,14 @@
                 display: none;
             }
 
-            /* MODIFICADO: Ajustes para el carrusel en móvil */
-            .carousel-container {
-                height: 50vh; /* Altura reducida para móvil */
+            /* NUEVO: Forzar que Fechas Importantes se ajuste al contenido */
+            .events-timeline {
+                height: auto !important;
+                min-height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                margin-bottom: 20px;
                 width: 100%;
-            }
-            
-            /* MODIFICACIÓN: Corregir visualización de imágenes en carrusel para móvil */
-            .carousel-slide {
-                background-size: cover !important; /* Cambiar a contain para que se vean completas */
-                background-repeat: no-repeat !important;
-                background-position: center center !important;
-                background-color: #000 !important; /* Fondo negro para las imágenes */
             }
             
             .carousel-title {
@@ -1309,16 +1410,6 @@
             .search-link {
                 white-space: nowrap;
                 padding: 0.7rem 1rem;
-            }
-            
-            /* NUEVO: Forzar que Fechas Importantes se ajuste al contenido */
-            .events-timeline {
-                height: auto !important;
-                min-height: auto !important;
-                max-height: none !important;
-                overflow: visible !important;
-                margin-bottom: 20px;
-                width: 100%;
             }
         }
 
@@ -1352,14 +1443,14 @@
                 padding: 0 1rem;
             }
             
-            /* MODIFICADO: Ajustes adicionales para el carrusel en móvil pequeño */
-            .carousel-container {
-                height: 40vh;
+            /* Ajustes adicionales para el carrusel móvil en pantallas muy pequeñas */
+            .mobile-carousel-container {
+                height: 250px;
             }
             
-            .carousel-arrow {
-                width: 40px;
-                height: 40px;
+            .mobile-carousel-arrow {
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
@@ -1436,8 +1527,6 @@
                             <a href="#" class="mega-submenu-item">Impresión</a>
                             <a href="#" class="mega-submenu-item">Impresión 3D</a>
                             <a href="#" class="mega-submenu-item">Kit Festejo Responsable</a>
-
-
                         </div>
                         <div class="mega-submenu-section">
                             <div class="mega-submenu-section-title">Espacios</div>
@@ -1505,55 +1594,102 @@
     </div>
 
     <div class="main-content">
-        <div class="carousel-container">
-            <div class="carousel">
+        <!-- CARRUSEL PARA DESKTOP -->
+        <div class="desktop-carousel-container">
+            <div class="desktop-carousel">
                 <!-- Slide 1 - Imagen -->
-                <div class="carousel-slide active" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_1.png');">
-                    <div class="carousel-content">
+                <div class="desktop-carousel-slide active" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_1.png');">
+                    <div class="desktop-carousel-content">
                     </div>
                 </div>
                 
                 <!-- Slide 2 - Imagen -->
-                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_2.png');">
-                    <div class="carousel-content">
+                <div class="desktop-carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_2.png');">
+                    <div class="desktop-carousel-content">
                     </div>
                 </div>
                 
                 <!-- Slide 3 - Imagen -->
-                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_3.jpg');">
-                    <div class="carousel-content">
+                <div class="desktop-carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_3.jpg');">
+                    <div class="desktop-carousel-content">
                     </div>
                 </div>
                 
                 <!-- Slide 4 - Video -->
-                <div class="carousel-video-slide">
+                <div class="desktop-carousel-video-slide">
                     <video autoplay muted>
                         <source src="https://itba-web-alumnos.vercel.app/video.mp4" type="video/mp4">
                         Tu navegador no soporta videos HTML5.
                     </video>
-                    <div class="carousel-video-content">
+                    <div class="desktop-carousel-video-content">
                     </div>
                 </div>
             </div>
             
-            <!-- Controles del carrusel -->
-            <div class="carousel-controls">
-                <div class="carousel-dot active" data-slide="0"></div>
-                <div class="carousel-dot" data-slide="1"></div>
-                <div class="carousel-dot" data-slide="2"></div>
-                <div class="carousel-dot" data-slide="3"></div>
+            <!-- Controles del carrusel desktop -->
+            <div class="desktop-carousel-controls">
+                <div class="desktop-carousel-dot active" data-slide="0"></div>
+                <div class="desktop-carousel-dot" data-slide="1"></div>
+                <div class="desktop-carousel-dot" data-slide="2"></div>
+                <div class="desktop-carousel-dot" data-slide="3"></div>
             </div>
             
-            <div class="carousel-arrows">
-                <div class="carousel-arrow prev">
+            <div class="desktop-carousel-arrows">
+                <div class="desktop-carousel-arrow prev">
                     <i class="fas fa-chevron-left"></i>
                 </div>
-                <div class="carousel-arrow next">
+                <div class="desktop-carousel-arrow next">
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
         </div>
 
+        <!-- NUEVO CARRUSEL PARA MÓVIL -->
+        <div class="mobile-carousel-container">
+            <div class="mobile-carousel">
+                <!-- Slide 1 - Imagen -->
+                <div class="mobile-carousel-slide active">
+                    <img src="https://itba-web-alumnos.vercel.app/carrusel_1.png" alt="Carrusel 1">
+                </div>
+                
+                <!-- Slide 2 - Imagen -->
+                <div class="mobile-carousel-slide">
+                    <img src="https://itba-web-alumnos.vercel.app/carrusel_2.png" alt="Carrusel 2">
+                </div>
+                
+                <!-- Slide 3 - Imagen -->
+                <div class="mobile-carousel-slide">
+                    <img src="https://itba-web-alumnos.vercel.app/carrusel_3.jpg" alt="Carrusel 3">
+                </div>
+                
+                <!-- Slide 4 - Video -->
+                <div class="mobile-carousel-video-slide">
+                    <video autoplay muted>
+                        <source src="https://itba-web-alumnos.vercel.app/video.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                    <div class="mobile-carousel-video-content">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles del carrusel móvil -->
+            <div class="mobile-carousel-controls">
+                <div class="mobile-carousel-dot active" data-slide="0"></div>
+                <div class="mobile-carousel-dot" data-slide="1"></div>
+                <div class="mobile-carousel-dot" data-slide="2"></div>
+                <div class="mobile-carousel-dot" data-slide="3"></div>
+            </div>
+            
+            <div class="mobile-carousel-arrows">
+                <div class="mobile-carousel-arrow prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="mobile-carousel-arrow next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
 
         <div class="events-timeline">
             <h3 class="timeline-title">Fechas Importantes</h3>
@@ -1672,16 +1808,17 @@
     </footer>
 
     <script>
-        const slides = document.querySelectorAll('.carousel-slide, .carousel-video-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const prevBtn = document.querySelector('.carousel-arrow.prev');
-        const nextBtn = document.querySelector('.carousel-arrow.next');
+        // Script para el carrusel de escritorio
+        const desktopSlides = document.querySelectorAll('.desktop-carousel-slide, .desktop-carousel-video-slide');
+        const desktopDots = document.querySelectorAll('.desktop-carousel-dot');
+        const desktopPrevBtn = document.querySelector('.desktop-carousel-arrow.prev');
+        const desktopNextBtn = document.querySelector('.desktop-carousel-arrow.next');
     
-        let currentIndex = 0;
-        let slideInterval = setInterval(nextSlide, 5000); // 5 segundos
+        let desktopCurrentIndex = 0;
+        let desktopSlideInterval = setInterval(desktopNextSlide, 5000); // 5 segundos
     
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
+        function desktopShowSlide(index) {
+            desktopSlides.forEach((slide, i) => {
                 const isActive = i === index;
                 slide.classList.toggle('active', isActive);
 
@@ -1695,7 +1832,7 @@
                         // Solo agregar un event listener si aún no lo tiene
                         if (!video.hasAttribute('data-listener-added')) {
                             video.addEventListener('ended', () => {
-                                nextSlide();
+                                desktopNextSlide();
                             });
                             video.setAttribute('data-listener-added', 'true');
                         }
@@ -1705,43 +1842,116 @@
                 }
             });
 
-            dots.forEach((dot, i) => {
+            desktopDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
 
-            currentIndex = index;
+            desktopCurrentIndex = index;
         }
     
-        function nextSlide() {
-            let nextIndex = (currentIndex + 1) % slides.length;
-            showSlide(nextIndex);
+        function desktopNextSlide() {
+            let nextIndex = (desktopCurrentIndex + 1) % desktopSlides.length;
+            desktopShowSlide(nextIndex);
         }
     
-        function prevSlide() {
-            let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(prevIndex);
+        function desktopPrevSlide() {
+            let prevIndex = (desktopCurrentIndex - 1 + desktopSlides.length) % desktopSlides.length;
+            desktopShowSlide(prevIndex);
         }
     
-        // Dots
-        dots.forEach((dot, index) => {
+        // Dots para desktop
+        desktopDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                clearInterval(slideInterval); // reinicia el temporizador si el usuario interactúa
-                showSlide(index);
-                slideInterval = setInterval(nextSlide, 5000);
+                clearInterval(desktopSlideInterval);
+                desktopShowSlide(index);
+                desktopSlideInterval = setInterval(desktopNextSlide, 5000);
             });
         });
     
-        // Arrows
-        nextBtn.addEventListener('click', () => {
-            clearInterval(slideInterval);
-            nextSlide();
-            slideInterval = setInterval(nextSlide, 5000);
+        // Arrows para desktop
+        desktopPrevBtn.addEventListener('click', () => {
+            clearInterval(desktopSlideInterval);
+            desktopPrevSlide();
+            desktopSlideInterval = setInterval(desktopNextSlide, 5000);
         });
     
-        prevBtn.addEventListener('click', () => {
-            clearInterval(slideInterval);
-            prevSlide();
-            slideInterval = setInterval(nextSlide, 5000);
+        desktopNextBtn.addEventListener('click', () => {
+            clearInterval(desktopSlideInterval);
+            desktopNextSlide();
+            desktopSlideInterval = setInterval(desktopNextSlide, 5000);
+        });
+
+        // Script para el carrusel móvil
+        const mobileSlides = document.querySelectorAll('.mobile-carousel-slide, .mobile-carousel-video-slide');
+        const mobileDots = document.querySelectorAll('.mobile-carousel-dot');
+        const mobilePrevBtn = document.querySelector('.mobile-carousel-arrow.prev');
+        const mobileNextBtn = document.querySelector('.mobile-carousel-arrow.next');
+    
+        let mobileCurrentIndex = 0;
+        let mobileSlideInterval = setInterval(mobileNextSlide, 5000); // 5 segundos
+    
+        function mobileShowSlide(index) {
+            mobileSlides.forEach((slide, i) => {
+                const isActive = i === index;
+                slide.classList.toggle('active', isActive);
+
+                // Pausar todos los videos que no están activos
+                const video = slide.querySelector('video');
+                if (video) {
+                    if (isActive) {
+                        video.currentTime = 0;
+                        video.play();
+
+                        // Solo agregar un event listener si aún no lo tiene
+                        if (!video.hasAttribute('data-listener-added')) {
+                            video.addEventListener('ended', () => {
+                                mobileNextSlide();
+                            });
+                            video.setAttribute('data-listener-added', 'true');
+                        }
+                    } else {
+                        video.pause();
+                    }
+                }
+            });
+
+            mobileDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            mobileCurrentIndex = index;
+        }
+    
+        function mobileNextSlide() {
+            let nextIndex = (mobileCurrentIndex + 1) % mobileSlides.length;
+            mobileShowSlide(nextIndex);
+        }
+    
+        function mobilePrevSlide() {
+            let prevIndex = (mobileCurrentIndex - 1 + mobileSlides.length) % mobileSlides.length;
+            mobileShowSlide(prevIndex);
+        }
+    
+        // Dots para móvil
+        mobileDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(mobileSlideInterval);
+                mobileShowSlide(index);
+                mobileSlideInterval = setInterval(mobileNextSlide, 5000);
+            });
+        });
+    
+        // Arrows para móvil
+        mobilePrevBtn.addEventListener('click', () => {
+            clearInterval(mobileSlideInterval);
+            mobilePrevSlide();
+            mobileSlideInterval = setInterval(mobileNextSlide, 5000);
+        });
+    
+        mobileNextBtn.addEventListener('click', () => {
+            clearInterval(mobileSlideInterval);
+            mobileNextSlide();
+            mobileSlideInterval = setInterval(mobileNextSlide, 5000);
         });
 
         // NUEVO: Función para posicionar correctamente los submenús
