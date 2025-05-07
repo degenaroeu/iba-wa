@@ -9,8 +9,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --color-primary: #0056b3;
-            --color-secondary: #008EBA;
+            --color-primary: #000000;
+            --color-secondary: #000000;
             --color-accent: #17a2b8;
             --color-background: #f8f9fa;
             --color-text: #333;
@@ -48,31 +48,59 @@
         }
 
         /* Colores para los elementos del mega-submenú */
-.nav-item:nth-child(1) .mega-submenu-item,
-.nav-item:nth-child(2) .mega-submenu-item,
-.nav-item:nth-child(3) .mega-submenu-item,
-.nav-item:nth-child(4) .mega-submenu-item,
-.nav-item:nth-child(5) .mega-submenu-item,
-.nav-item:nth-child(6) .mega-submenu-item,
-.nav-item:nth-child(7) .mega-submenu-item {
-    color: #000000 !important; /* Asegúrate que sea negro para todos */
-}
+        .nav-item:nth-child(1) .mega-submenu-item,
+        .nav-item:nth-child(2) .mega-submenu-item,
+        .nav-item:nth-child(3) .mega-submenu-item,
+        .nav-item:nth-child(4) .mega-submenu-item,
+        .nav-item:nth-child(5) .mega-submenu-item,
+        .nav-item:nth-child(6) .mega-submenu-item,
+        .nav-item:nth-child(7) .mega-submenu-item {
+            color: #000000 !important; /* Asegúrate que sea negro para todos */
+        }
 
-/* Colores para los elementos del submenú */
-.nav-item:nth-child(1) .submenu-item,
-.nav-item:nth-child(2) .submenu-item,
-.nav-item:nth-child(3) .submenu-item,
-.nav-item:nth-child(4) .submenu-item,
-.nav-item:nth-child(5) .submenu-item,
-.nav-item:nth-child(6) .submenu-item,
-.nav-item:nth-child(7) .submenu-item {
-    color: #000000 !important; /* Asegúrate que sea negro para todos */
-}
+        /* Colores para los elementos del submenú */
+        .nav-item:nth-child(1) .submenu-item,
+        .nav-item:nth-child(2) .submenu-item,
+        .nav-item:nth-child(3) .submenu-item,
+        .nav-item:nth-child(4) .submenu-item,
+        .nav-item:nth-child(5) .submenu-item,
+        .nav-item:nth-child(6) .submenu-item,
+        .nav-item:nth-child(7) .submenu-item {
+            color: #000000 !important; /* Asegúrate que sea negro para todos */
+        }
 
-/* Para los subitems anidados */
-.mega-submenu-subitem {
-    color: #000000 !important; /* Asegúrate que sea negro para todos */
-}
+        /* Para los subitems anidados */
+        .mega-submenu-subitem {
+            color: #000000 !important; /* Asegúrate que sea negro para todos */
+        }
+
+        /* Asegurar que los títulos de sección también sean negros */
+        .mega-submenu-section-title {
+            color: #000000 !important;
+        }
+
+        /* Forzar color negro en TODOS los elementos del submenú */
+        .mega-submenu-item,
+        .submenu-item,
+        .mega-submenu-subitem,
+        .mega-submenu-section-title,
+        .main-menu-item .mega-submenu-item,
+        .main-menu-item .mega-submenu-section-title,
+        .nav-item .mega-submenu-item,
+        .nav-item .mega-submenu-section-title,
+        .nav-item .submenu-item {
+            color: #000000 !important;
+        }
+
+        /* Asegurar que los enlaces en hover también sean negros */
+        .mega-submenu-item:hover,
+        .submenu-item:hover,
+        .mega-submenu-subitem:hover,
+        .main-menu-item .mega-submenu-item:hover,
+        .nav-item .mega-submenu-item:hover,
+        .nav-item .submenu-item:hover {
+            color: #000000 !important;
+        }
 
         .custom-icon {
             width: 24px;       /* o el tamaño que necesites */
@@ -100,36 +128,9 @@
             transform: scale(1.05);
         }
 
-        /* NUEVO: Botón hamburguesa para móviles */
+        /* NUEVO: Botón hamburguesa para móviles - ELIMINADO */
         .hamburger-menu {
             display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .hamburger-menu span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: white;
-            border-radius: 3px;
-            transition: var(--transition);
-        }
-
-        .hamburger-menu.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
-
-        .hamburger-menu.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger-menu.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
         }
 
         .nav-links {
@@ -278,29 +279,6 @@
             text-decoration: none;
         }
 
-        /* Colores para los elementos del submenú */
-        .nav-item:nth-child(1) .submenu-item {
-            color: var(--color-menu-1);
-        }
-        .nav-item:nth-child(2) .submenu-item {
-            color: var(--color-menu-2);
-        }
-        .nav-item:nth-child(3) .submenu-item {
-            color: var(--color-menu-3);
-        }
-        .nav-item:nth-child(4) .submenu-item {
-            color: var(--color-menu-4);
-        }
-        .nav-item:nth-child(5) .submenu-item {
-            color: var(--color-menu-5);
-        }
-        .nav-item:nth-child(6) .submenu-item {
-            color: var(--color-menu-6);
-        }
-        .nav-item:nth-child(7) .submenu-item {
-            color: var(--color-menu-7);
-        }
-
         /* Hover para los elementos del submenú */
         .nav-item:nth-child(1) .submenu-item:hover {
             background-color: rgba(78, 205, 196, 0.1);
@@ -416,36 +394,6 @@
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
-        /* Colores para los títulos de sección */
-        .nav-item:nth-child(1) .mega-submenu-section-title {
-            color: var(--color-menu-1);
-            border-bottom-color: rgba(78, 205, 196, 0.3);
-        }
-        .nav-item:nth-child(2) .mega-submenu-section-title {
-            color: var(--color-menu-2);
-            border-bottom-color: rgba(108, 117, 125, 0.3);
-        }
-        .nav-item:nth-child(3) .mega-submenu-section-title {
-            color: var(--color-menu-3);
-            border-bottom-color: rgba(255, 176, 0, 0.3);
-        }
-        .nav-item:nth-child(4) .mega-submenu-section-title {
-            color: var(--color-menu-4);
-            border-bottom-color: rgba(161, 125, 195, 0.3);
-        }
-        .nav-item:nth-child(5) .mega-submenu-section-title {
-            color: var(--color-menu-5);
-            border-bottom-color: rgba(181, 198, 137, 0.3);
-        }
-        .nav-item:nth-child(6) .mega-submenu-section-title {
-            color: var(--color-menu-6);
-            border-bottom-color: rgba(248, 169, 120, 0.3);
-        }
-        .nav-item:nth-child(7) .mega-submenu-section-title {
-            color: var(--color-menu-7);
-            border-bottom-color: rgba(229, 152, 155, 0.3);
-        }
-
         .mega-submenu-item {
             padding: 0.3rem 0.5rem;
             font-size: 0.75rem; /* Texto más grande */
@@ -453,29 +401,6 @@
             display: block;
             text-decoration: none;
             border-radius: 3px;
-        }
-
-        /* Colores para los elementos del mega-submenú */
-        .nav-item:nth-child(1) .mega-submenu-item {
-            color: #000000; /* Negro para todos los elementos del submenu */
-        }
-        .nav-item:nth-child(2) .mega-submenu-item {
-            color: #000000;
-        }
-        .nav-item:nth-child(3) .mega-submenu-item {
-            color: #000000;
-        }
-        .nav-item:nth-child(4) .mega-submenu-item {
-            color: #000000;
-        }
-        .nav-item:nth-child(5) .mega-submenu-item {
-            color: #000000;
-        }
-        .nav-item:nth-child(6) .mega-submenu-item {
-            color: #000000;
-        }
-        .nav-item:nth-child(7) .mega-submenu-item {
-            color: #000000;
         }
 
         /* Hover para los elementos del mega-submenú */
@@ -502,7 +427,6 @@
         .mega-submenu-subitem {
             padding-left: 1rem;
             font-size: 0.7rem;
-            color: #000000 !important ;
             display: block;
             text-decoration: none;
             margin: 0.2rem 0;
@@ -671,35 +595,10 @@
             color: white;
         }
 
-        /* Colores para los títulos de sección en el menú principal */
-        .main-menu-item:nth-child(1) .mega-submenu-section-title {
-            color: #000000;
-            border-bottom-color: rgba(78, 205, 196, 0.3);
-        }
-        .main-menu-item:nth-child(2) .mega-submenu-section-title {
-            color: #000000;
-            border-bottom-color: rgba(108, 117, 125, 0.3);
-        }
-        .main-menu-item:nth-child(3) .mega-submenu-section-title {
-            color: #000000;
-            border-bottom-color: rgba(255, 176, 0, 0.3);
-        }
-        .main-menu-item:nth-child(4) .mega-submenu-section-title {
-            color: #000000;
-            border-bottom-color: rgba(161, 125, 195, 0.3);
-        }
-        .main-menu-item:nth-child(5) .mega-submenu-section-title {
-            color: #000000;
-            border-bottom-color: rgba(181, 198, 137, 0.3);
-        }
-        .main-menu-item:nth-child(6) .mega-submenu-section-title {
-            color: #000000;
-            border-bottom-color: rgba(248, 169, 120, 0.3);
-        }
-
+        /* MODIFICADO: Ajuste del carrusel para dispositivos móviles */
         .carousel-container {
             width: 70%;
-            height: 65vh; /* AJUSTADO: altura del carrusel */
+            height: 65vh; /* altura del carrusel */
             position: relative;
             overflow: hidden;
             border-radius: 8px;
@@ -724,7 +623,7 @@
             flex-direction: column;
             justify-content: center;
             background-size: cover;
-            background-position: unset;
+            background-position: center; /* Cambiado a center para mejor visualización en móvil */
             padding: 4rem 5%;
             background-blend-mode: darken; 
             background-color: transparent; 
@@ -1145,41 +1044,24 @@
             color: white;
         }
 
-        /* NUEVO: Estilos para el menú móvil */
+        /* NUEVO: Estilos para el menú móvil - MODIFICADO para mostrar botones en lugar de hamburguesa */
         .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 80%;
-            height: 100vh;
-            background-color: #fff;
-            z-index: 1000;
-            overflow-y: auto;
-            transition: left 0.3s ease;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            padding: 2rem 1rem;
-        }
-
-        .mobile-menu.active {
-            left: 0;
-        }
-
-        .mobile-menu-overlay {
+            display: none; /* Oculto por defecto, se muestra en media query */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        .mobile-menu.active {
+            display: flex;
         }
 
         .mobile-menu-close {
@@ -1190,88 +1072,62 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--color-text);
+            color: white;
         }
 
-        .mobile-menu-item {
-            margin-bottom: 1rem;
+        /* Nuevo estilo para el menú móvil con botones verticales */
+        .mobile-menu-buttons {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 300px;
+            gap: 10px;
+            margin-top: 60px;
         }
 
-        .mobile-menu-link {
+        .mobile-menu-button {
             display: flex;
             align-items: center;
-            padding: 0.75rem;
+            padding: 12px 15px;
             text-decoration: none;
-            color: var(--color-text);
+            color: white;
             font-weight: 600;
             border-radius: 5px;
             transition: var(--transition);
+            width: 100%;
         }
 
-        .mobile-menu-link:hover {
-            background-color: rgba(0,0,0,0.05);
+        .mobile-menu-button:nth-child(1) {
+            background-color: var(--color-menu-1);
+        }
+        .mobile-menu-button:nth-child(2) {
+            background-color: var(--color-menu-2);
+        }
+        .mobile-menu-button:nth-child(3) {
+            background-color: var(--color-menu-3);
+        }
+        .mobile-menu-button:nth-child(4) {
+            background-color: var(--color-menu-4);
+        }
+        .mobile-menu-button:nth-child(5) {
+            background-color: var(--color-menu-5);
+        }
+        .mobile-menu-button:nth-child(6) {
+            background-color: var(--color-menu-6);
+        }
+        .mobile-menu-button:nth-child(7) {
+            background-color: var(--color-menu-7);
+        }
+
+        .mobile-menu-button:hover {
+            opacity: 0.9;
         }
 
         .mobile-menu-icon {
-            margin-right: 1rem;
+            margin-right: 10px;
             width: 24px;
             height: 24px;
-        }
-
-        .mobile-submenu {
-            margin-left: 2rem;
-            margin-top: 0.5rem;
-            display: none;
-        }
-
-        .mobile-submenu.active {
-            display: block;
-        }
-
-        .mobile-submenu-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .mobile-submenu-link {
-            display: block;
-            padding: 0.5rem;
-            text-decoration: none;
-            color: var(--color-text);
-            font-size: 0.9rem;
-            border-radius: 5px;
-            transition: var(--transition);
-        }
-
-        .mobile-submenu-link:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
-
-        .mobile-menu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.75rem;
-            text-align: left;
-            font-weight: 600;
-            color: var(--color-text);
-            border-radius: 5px;
-            transition: var(--transition);
-        }
-
-        .mobile-menu-toggle:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
-
-        .mobile-menu-toggle-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu-toggle.active .mobile-menu-toggle-icon {
-            transform: rotate(180deg);
+            filter: brightness(0) invert(1);
         }
 
         @media (max-width: 1200px) {
@@ -1304,8 +1160,9 @@
 
             .events-timeline {
                 height: auto;
-                max-height: 50vh;
+                max-height: none; /* MODIFICADO: Eliminar altura máxima para que se ajuste al contenido */
                 position: static;
+                margin-top: 20px;
             }
             .news-cards-container { /* Added media query for smaller screens */
                 grid-template-columns: 1fr;
@@ -1352,18 +1209,79 @@
         }
 
         @media (max-width: 768px) {
-            /* NUEVO: Mostrar botón hamburguesa y ocultar menú principal */
-            .hamburger-menu {
-                display: flex;
+            /* Eliminar completamente el botón de menú móvil */
+            .mobile-menu-toggle {
+                display: none;
             }
-            
+
+            /* Mejorar la estética del menú móvil en vista móvil */
             .main-menu-container {
-                display: none;
+                display: block; /* Mostrar contenedor del menú principal */
+                margin-top: 0;
+                padding: 0 15px; /* Añadir padding horizontal */
+                text-align: center; /* NUEVO: Centrar todo el contenido */
             }
             
-            .nav-links {
+            .main-menu {
+                flex-direction: column; /* Apilar elementos verticalmente */
+                gap: 10px; /* Aumentar espacio entre elementos */
+                padding: 15px 0; /* Añadir padding vertical */
+                align-items: center; /* NUEVO: Centrar elementos */
+                width: 100%; /* NUEVO: Asegurar que ocupe todo el ancho */
+                max-width: 400px; /* NUEVO: Limitar ancho máximo */
+                margin: 0 auto; /* NUEVO: Centrar horizontalmente */
+            }
+            
+            .main-menu-item {
+                width: 100%;
+                border-radius: 8px; /* Bordes más redondeados */
+                overflow: hidden; /* Asegurar que los bordes redondeados se apliquen */
+                margin-bottom: 5px; /* Espacio adicional entre elementos */
+                max-width: 90%; /* NUEVO: Limitar ancho para mejor estética */
+            }
+            
+            .main-menu-item > a {
+                flex-direction: row; /* Iconos y texto en línea */
+                justify-content: center; /* MODIFICADO: Centrar contenido */
+                padding: 12px 15px; /* Padding más generoso */
+                font-size: 0.95rem; /* Texto ligeramente más grande */
+                text-align: center; /* NUEVO: Asegurar que el texto esté centrado */
+            }
+            
+            .icon-container {
+                margin-bottom: 0;
+                margin-right: 15px; /* Más espacio entre icono y texto */
+                height: auto;
+                justify-content: center; /* NUEVO: Centrar icono */
+                width: auto; /* NUEVO: Ajustar ancho automáticamente */
+            }
+            
+            .menu-icon {
+                width: 24px;
+                height: 24px;
+            }
+            
+            /* Ocultar submenús en móvil */
+            .main-menu-item .mega-submenu,
+            .nav-item .mega-submenu,
+            .nav-item .submenu {
                 display: none;
             }
+
+            /* MODIFICADO: Ajustes para el carrusel en móvil */
+            .carousel-container {
+                height: 50vh; /* Altura reducida para móvil */
+                width: 100%;
+            }
+            
+            /* NUEVO: Forzar ajuste de imágenes en carrusel móvil */
+            .carousel-slide {
+                background-size: contain !important; /* Forzar que la imagen se ajuste completamente */
+                background-repeat: no-repeat !important;
+                background-position: center center !important;
+                background-color: #000 !important; /* Fondo negro para las imágenes */
+            }
+            
             .carousel-title {
                 font-size: 2rem;
             }
@@ -1390,83 +1308,32 @@
                 padding: 0.7rem 1rem;
             }
             
-            /* Ajuste para el menú principal en pantallas pequeñas */
-            .main-menu-item > a {
-                flex-direction: row;
-                justify-content: center; /* Centrar horizontalmente */
-                align-items: center; /* Centrar verticalmente */
-                padding: 0.75rem;
-            }
-            
-            .icon-container {
-                margin-bottom: 0;
-                margin-right: 8px;
-                height: auto;
-                width: auto; /* Ajustar ancho para modo móvil */
-            }
-            
-            .main-menu {
-                flex-direction: column;
-                height: auto;
-                gap: 5px;
-            }
-            
-            .main-menu-item {
-                height: auto;
-            }
-            
-            .main-menu-item > a {
-                font-size: 0.95rem;
-                flex-direction: row;
-                padding: 0.75rem;
-            }
-            
-            .icon-container {
-                margin-bottom: 0;
-                margin-right: 8px;
-                height: auto;
-            }
-            
-            .menu-icon {
-                width: 28px;
-                height: 28px;
-                margin-bottom: 0;
-            }
-            
-            /* Ajuste para el logo en pantallas pequeñas */
-            .logo {
-                height: 40px;
-            }
-            
-            /* Ajuste para el mega-submenu en el menú principal en pantallas pequeñas */
-            .main-menu-item .mega-submenu {
-                position: static;
+            /* NUEVO: Forzar que Fechas Importantes se ajuste al contenido */
+            .events-timeline {
+                height: auto !important;
+                min-height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                margin-bottom: 20px;
                 width: 100%;
-                transform: none;
-                opacity: 0;
-                height: 0;
-                visibility: hidden;
-                padding: 0;
-                overflow: hidden;
-                transition: all 0.3s ease;
-            }
-            
-            .main-menu-item:hover .mega-submenu {
-                opacity: 1;
-                visibility: visible;
-                height: auto;
-                padding: 1rem;
-                transform: none;
-            }
-            
-            .mega-submenu-column {
-                width: 100%;
-                padding: 0;
-                margin-bottom: 1rem;
             }
         }
 
         @media (max-width: 480px) {
+            /* Ajustes adicionales para pantallas muy pequeñas */
+            .main-menu-container {
+                padding: 0 10px; /* Reducir padding en pantallas muy pequeñas */
+            }
+            
+            .main-menu-item > a {
+                padding: 10px 12px; /* Reducir padding en pantallas muy pequeñas */
+                font-size: 0.9rem; /* Texto ligeramente más pequeño */
+            }
+            
+            .icon-container {
+                margin-right: 10px; /* Menos espacio entre icono y texto */
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
             }
@@ -1481,6 +1348,16 @@
             .latest-news-section {
                 padding: 0 1rem;
             }
+            
+            /* MODIFICADO: Ajustes adicionales para el carrusel en móvil pequeño */
+            .carousel-container {
+                height: 40vh;
+            }
+            
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -1489,149 +1366,11 @@
     <div class="logo-container">
         <a href="https://itba-wa.vercel.app">
             <img src="https://itba-wa-suscripciones-degenaroeus-projects.vercel.app/ITBA_ITBAAlumnos_Identidad_Logos-02-1.png" alt="ITBA Logo" class="logo">
-        </a>        <!-- NUEVO: Botón hamburguesa para móviles -->
-        <div class="hamburger-menu" id="hamburgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        </a>
+        <!-- ELIMINADO: Botón para abrir menú móvil -->
     </div>
     
-    <!-- NUEVO: Menú móvil -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" id="mobileMenuClose">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="mobile-menu-item">
-            <button class="mobile-menu-toggle" data-target="infoSubmenu">
-                <div class="mobile-menu-link">
-                    <img src="https://itba-web-alumnos.vercel.app/image-1.png" class="mobile-menu-icon" alt="Info ITBA">
-                    Info ITBA
-                </div>
-                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
-            </button>
-            <div class="mobile-submenu" id="infoSubmenu">
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Información Académica</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Experiencia Académica</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Normativas</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Becas y Préstamos</a>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-menu-item">
-            <button class="mobile-menu-toggle" data-target="tramitesSubmenu">
-                <div class="mobile-menu-link">
-                    <img src="https://itba-web-alumnos.vercel.app/image-2.png" class="mobile-menu-icon" alt="Trámites y Servicios">
-                    Trámites y Servicios
-                </div>
-                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
-            </button>
-            <div class="mobile-submenu" id="tramitesSubmenu">
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Servicios</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Información Administrativa</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Espacios</a>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-menu-item">
-            <button class="mobile-menu-toggle" data-target="bienestarSubmenu">
-                <div class="mobile-menu-link">
-                    <img src="https://itba-web-alumnos.vercel.app/image-6.png" class="mobile-menu-icon" alt="Bienestar y Tutorías">
-                    Bienestar y Tutorías
-                </div>
-                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
-            </button>
-            <div class="mobile-submenu" id="bienestarSubmenu">
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Bienestar Estudiantil</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Tutorías</a>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-menu-item">
-            <button class="mobile-menu-toggle" data-target="primerAnoSubmenu">
-                <div class="mobile-menu-link">
-                    <img src="https://itba-web-alumnos.vercel.app/image-7.png" class="mobile-menu-icon" alt="Estudiantes Primer Año">
-                    Estudiantes Primer Año
-                </div>
-                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
-            </button>
-            <div class="mobile-submenu" id="primerAnoSubmenu">
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Información Básica</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Recursos</a>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-menu-item">
-            <button class="mobile-menu-toggle" data-target="iniciativasSubmenu">
-                <div class="mobile-menu-link">
-                    <img src="https://itba-web-alumnos.vercel.app/image-4.png" class="mobile-menu-icon" alt="Iniciativas Estudiantiles">
-                    Iniciativas Estudiantiles
-                </div>
-                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
-            </button>
-            <div class="mobile-submenu" id="iniciativasSubmenu">
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Grupos Estudiantiles</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Participación</a>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-menu-item">
-            <button class="mobile-menu-toggle" data-target="movilidadSubmenu">
-                <div class="mobile-menu-link">
-                    <img src="https://itba-web-alumnos.vercel.app/image-3.png" class="mobile-menu-icon" alt="Movilidad Internacional">
-                    Movilidad Internacional
-                </div>
-                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
-            </button>
-            <div class="mobile-submenu" id="movilidadSubmenu">
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Programas</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Información</a>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-menu-item">
-            <button class="mobile-menu-toggle" data-target="desarrolloSubmenu">
-                <div class="mobile-menu-link">
-                    <img src="https://itba-web-alumnos.vercel.app/image-5.png" class="mobile-menu-icon" alt="Desarrollo Profesional">
-                    Desarrollo Profesional
-                </div>
-                <i class="fas fa-chevron-down mobile-menu-toggle-icon"></i>
-            </button>
-            <div class="mobile-submenu" id="desarrolloSubmenu">
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Carrera Profesional</a>
-                </div>
-                <div class="mobile-submenu-item">
-                    <a href="#" class="mobile-submenu-link">Recursos</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <!-- Eliminado el menú móvil desplegable -->
     
     <!-- Nuevo menú principal con iconos y separación -->
     <div class="main-menu-container">
@@ -2000,58 +1739,6 @@
             clearInterval(slideInterval);
             prevSlide();
             slideInterval = setInterval(nextSlide, 5000);
-        });
-        
-        // NUEVO: Funcionalidad para el menú móvil
-        const hamburgerMenu = document.getElementById('hamburgerMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuToggles = document.querySelectorAll('.mobile-menu-toggle');
-        
-        hamburgerMenu.addEventListener('click', () => {
-            hamburgerMenu.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            mobileMenuOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-        
-        mobileMenuClose.addEventListener('click', () => {
-            hamburgerMenu.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        mobileMenuOverlay.addEventListener('click', () => {
-            hamburgerMenu.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        mobileMenuToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const targetId = toggle.getAttribute('data-target');
-                const targetSubmenu = document.getElementById(targetId);
-                
-                // Cerrar todos los submenús
-                document.querySelectorAll('.mobile-submenu').forEach(submenu => {
-                    if (submenu.id !== targetId) {
-                        submenu.classList.remove('active');
-                    }
-                });
-                
-                document.querySelectorAll('.mobile-menu-toggle').forEach(btn => {
-                    if (btn !== toggle) {
-                        btn.classList.remove('active');
-                    }
-                });
-                
-                // Abrir/cerrar el submenú actual
-                targetSubmenu.classList.toggle('active');
-                toggle.classList.toggle('active');
-            });
         });
 
         // NUEVO: Función para posicionar correctamente los submenús
