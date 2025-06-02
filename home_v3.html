@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITBA - Instituto Tecnológico de Buenos Aires</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --color-primary: #0056b3;
+            --color-secondary: #008EBA;
+            --color-accent: #17a2b8;
+            --color-background: #f8f9fa;
+            --color-text: #333;
+            --color-text-light: #6c757d;
+            --transition: all 0.3s ease;
+            
+            /* Nueva paleta de colores para el menú - azul oscuro a negro */
+            --color-menu-1: #0a2472; /* Azul oscuro */
+            --color-menu-2: #1e3a8a; /* Azul medio */
+            --color-menu-3: #374151; /* Gris oscuro */
+            --color-menu-4: #4b5563; /* Gris medio-oscuro */
+            --color-menu-5: #6b7280; /* Gris medio */
+            --color-menu-6: #4a5568; /* Gris azulado */
+            --color-menu-7: #374151; /* Gris oscuro */
+            --color-menu-8: #1f2937; /* Casi negro */
+            --color-menu-9: #111827; /* Muy oscuro */
+            --color-menu-10: #000000; /* Negro */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Estilos de tipografía */
+        h1, .carousel-title, .section-title {
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 800; /* ExtraBold */
+        }
+
+        h2, h3, h4, .carousel-subtitle, .timeline-title, .news-title, .footer-title {
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 700; /* Bold */
+        }
+
+        p, a, span, div, .news-description, .footer-link {
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 400; /* Regular */
+        }
+
+        /* Logo alineado a la izquierda */
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: black;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            height: 35px;
+            transition: var(--transition);
+            filter: brightness(0) invert(1);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* NUEVO DISEÑO DEL MENÚ CON ALTURA REDUCIDA */
+        .main-menu-container {
+            width: 100%;
+            padding: 0;
+            background-color: transparent;
+            margin-top: 0;
+        }
+
+        .main-menu {
+            display: flex;
+            width: 100%;
+            height: auto;
+            align-items: stretch;
+        }
+
+        .main-menu-item {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-menu-item > a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            text-align: left;
+            padding: 1.5rem 1rem;
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+            min-height: 130px;
+        }
+
+        .menu-title {
+            font-size: 1rem; /* Reducido para que "Reglamentaciones" quepa mejor */
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 3;
+            line-height: 1.2;
+            width: 100%;
+        }
+
+        /* Estilos para títulos de dos líneas */
+        .menu-title-line1 {
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .menu-title-line2 {
+            display: block;
+        }
+
+        .menu-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: var(--transition);
+        }
+
+        .menu-subtitle {
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            line-height: 1.4;
+            position: relative;
+            z-index: 3;
+            width: 100%;
+        }
+
+        /* Colores de fondo para cada sección - nueva paleta */
+        .main-menu-item:nth-child(1) > a {
+            background-color: var(--color-menu-1);
+        }
+        .main-menu-item:nth-child(2) > a {
+            background-color: var(--color-menu-2);
+        }
+        .main-menu-item:nth-child(3) > a {
+            background-color: var(--color-menu-3);
+        }
+        .main-menu-item:nth-child(4) > a {
+            background-color: var(--color-menu-4);
+        }
+        .main-menu-item:nth-child(5) > a {
+            background-color: var(--color-menu-5);
+        }
+        .main-menu-item:nth-child(6) > a {
+            background-color: var(--color-menu-6);
+        }
+        .main-menu-item:nth-child(7) > a {
+            background-color: var(--color-menu-7);
+        }
+        .main-menu-item:nth-child(8) > a {
+            background-color: var(--color-menu-8);
+        }
+        .main-menu-item:nth-child(9) > a {
+            background-color: var(--color-menu-9);
+        }
+        .main-menu-item:nth-child(10) > a {
+            background-color: var(--color-menu-10);
+        }
+
+        /* Efecto hover con overlay más claro */
+        .main-menu-item > a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .main-menu-item > a:hover::before {
+            opacity: 1;
+        }
+
+        .main-menu-item > a:hover {
+            transform: translateY(-3px);
+        }
+
+        .main-menu-item > a:hover .menu-title::after {
+            width: 60px;
+        }
+
+        /* Estilos para submenús desplegables - MEJORADOS */
+        .mega-submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 2rem;
+        }
+
+        /* Solo mostrar submenús en desktop */
+        @media (min-width: 769px) {
+            .main-menu-item:hover .mega-submenu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+
+        .mega-submenu-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mega-submenu-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .mega-submenu-section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .mega-submenu-item {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .mega-submenu-item:hover {
+            color: var(--color-primary);
+            padding-left: 10px;
+        }
+
+        .mega-submenu-subitem {
+            padding-left: 1rem;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            display: block;
+            text-decoration: none;
+            margin: 0.2rem 0;
+        }
+
+        .mega-submenu-subitem:hover {
+            text-decoration: underline;
+        }
+
+        /* FORZAR ESPACIADO ESPECÍFICO - CARRUSEL */
+        .main-content {
+            display: flex;
+            padding: 0 !important; /* ELIMINAR TODO PADDING */
+            margin: 0 !important; /* ELIMINAR TODO MARGIN */
+            gap: 0;
+            justify-content: center;
+            align-items: center;
+            width: 100vw; /* Ancho completo de la ventana */
+            height: 75vh;
+            position: relative;
+        }
+
+        /* Carrusel ajustado con márgenes de 5px */
+        .carousel-container {
+            width: 100vw; /* Ancho completo sin márgenes laterales */
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-sizing: border-box;
+            border-radius: 0; /* Sin bordes redondeados */
+            margin: 0 !important; /* FORZAR MARGIN 0 */
+            padding: 0 !important; /* FORZAR PADDING 0 */
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 0; /* Sin bordes redondeados */
+            overflow: hidden;
+            margin: 0 !important; /* FORZAR MARGIN 0 */
+            padding: 0 !important; /* FORZAR PADDING 0 */
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 5%;
+            background-blend-mode: darken; 
+            background-color: rgba(0, 0, 0, 0.4); 
+            border-radius: 0; /* Sin bordes redondeados */
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-content {
+            max-width: 800px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 2rem;
+            border-radius: 10px; 
+        }
+
+        .carousel-title {
+            font-size: 3rem;
+            font-weight: 800; /* ExtraBold */
+            margin-bottom: 1rem;
+        }
+
+        .carousel-subtitle {
+            font-size: 1.5rem;
+            font-weight: 700; /* Bold */
+            margin-bottom: 2rem;
+        }
+
+        .carousel-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Estilos para la sección de fechas importantes */
+        .events-timeline {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 800; /* ExtraBold */
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .timeline-event {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 1.5rem;
+            border-left: 2px solid var(--color-accent);
+        }
+
+        .timeline-event:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .event-date {
+            font-size: 0.9rem;
+            font-weight: 700; /* Bold */
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1rem;
+            font-weight: 700; /* Bold */
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-location {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-more-btn {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+        .event-more-btn:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* FORZAR ESPACIADO ESPECÍFICO - CONTENT WRAPPER */
+        .content-wrapper {
+            max-width: none;
+            margin: 0 auto !important; /* ELIMINAR MÁRGENES VERTICALES */
+            padding: 0 5% !important; /* SOLO PADDING LATERAL */
+        }
+
+        /* FORZAR ESPACIADO ESPECÍFICO - BUSCADOR */
+        .search-section {
+            background-color: #e5e7eb;
+            padding: 3rem 0 !important; /* FORZAR PADDING ESPECÍFICO */
+            margin: 0 0 10px 0 !important; /* FORZAR MARGIN 0 ARRIBA Y 10PX ABAJO */
+            border-radius: 0;
+            box-shadow: none;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+        }
+
+        .search-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 0 5%; /* Padding lateral solo para el título */
+        }
+
+        .search-bar {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(100% - 10%); /* Ancho con margen del 5% a cada lado */
+            max-width: 800px;
+        }
+
+        .search-icon {
+            color: var(--color-secondary);
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            font-size: 1rem;
+            padding: 0.5rem;
+            outline: none;
+            width: 100%;
+        }
+
+        .search-link {
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .search-link:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* FORZAR ESPACIADO ESPECÍFICO - NOTICIAS */
+        .latest-news-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: none;
+            margin: 10px auto 4rem auto !important; /* FORZAR MARGIN DE 10PX ARRIBA */
+            width: 100%;
+            padding-top: 0 !important; /* ELIMINAR PADDING TOP */
+        }
+
+        .news-cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-title {
+            font-size: 1.5rem;
+            font-weight: 700; /* Bold */
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .news-description {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 400; /* Regular */
+            line-height: 1.6;
+        }
+
+        .news-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .news-link:hover {
+            color: var(--color-primary);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800; /* ExtraBold */
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+            text-align: center;
+        }
+
+        footer {
+            background-color: #0a0f1c;
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        .footer-logo img {
+            filter: brightness(0) invert(1);
+            max-width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .footer-logo img:hover {
+            opacity: 0.8;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-title {
+            font-weight: 700; /* Bold */
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-weight: 400; /* Regular */
+            font-size: 0.9rem;
+            line-height: 2;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        /* Controles del carrusel - arreglados */
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .carousel-arrows {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            pointer-events: auto;
+        }
+
+        .carousel-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+
+        .carousel-arrow.next {
+            right: 20px;
+        }
+
+        .carousel-video-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+            border-radius: 0; /* Sin bordes redondeados */
+        }
+
+        .carousel-video-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0; /* Sin bordes redondeados */
+        }
+
+        .carousel-video-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            z-index: 3;
+            border-bottom-left-radius: 0; /* Sin bordes redondeados */
+            border-bottom-right-radius: 0; /* Sin bordes redondeados */
+        }
+
+        /* Responsive Design - MEJORADO CON ESPACIADO FORZADO */
+        @media (max-width: 1200px) {
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-logo {
+                grid-column: 1 / -1;
+                justify-self: center;
+                margin-bottom: 2rem;
+            }
+            .mega-submenu-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                height: 60vh; /* Altura reducida para tablets */
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .news-cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .main-menu-item > a {
+                padding: 1.2rem 1rem;
+                min-height: 110px;
+            }
+            
+            .menu-title {
+                font-size: 0.9rem;
+            }
+            
+            .menu-subtitle {
+                font-size: 0.65rem;
+            }
+
+            /* FORZAR ESPACIADO EN TABLET */
+            .search-section {
+                margin: 0 0 10px 0 !important;
+                padding: 2rem 0 !important;
+            }
+
+            .latest-news-section {
+                margin: 10px auto 4rem auto !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-title {
+                font-size: 2rem;
+            }
+            .carousel-subtitle {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .search-title {
+                font-size: 1.5rem;
+            }
+            
+            /* FORZAR ESPACIADO EN MOBILE */
+            .main-content {
+                height: 50vh;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .search-section {
+                padding: 2rem 1rem !important;
+                margin: 0 0 10px 0 !important;
+                margin-left: -50vw !important;
+                margin-right: -50vw !important;
+            }
+            
+            .main-menu {
+                flex-direction: column;
+            }
+            
+            .main-menu-item > a {
+                padding: 1rem;
+                min-height: 80px; /* Altura uniforme para todos los botones en mobile */
+            }
+            
+            .menu-title {
+                font-size: 0.85rem;
+            }
+            
+            .menu-subtitle {
+                font-size: 0.6rem;
+            }
+            
+            .logo {
+                height: 40px;
+            }
+            
+            /* Ocultar completamente los submenús en mobile */
+            .mega-submenu {
+                display: none;
+            }
+            
+            .news-cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Mejorar el buscador en mobile */
+            .search-bar {
+                padding: 0.5rem;
+                width: 90%;
+                margin: 0 auto;
+            }
+            
+            .search-input {
+                padding: 0.5rem;
+            }
+            
+            .search-link {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .latest-news-section {
+                margin: 10px auto 4rem auto !important;
+                padding-top: 0 !important;
+            }
+
+            .content-wrapper {
+                padding: 0 5% !important;
+                margin: 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .latest-news-section {
+                padding: 0 1rem;
+                margin: 10px auto 4rem auto !important;
+            }
+            .main-content {
+                height: 45vh;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* FORZAR ESPACIADO EN MOBILE PEQUEÑO */
+            .search-bar {
+                flex-wrap: nowrap;
+                padding: 0.4rem;
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .search-section {
+                padding: 2rem 5% !important;
+                margin: 0 0 10px 0 !important;
+                margin-left: -50vw !important;
+                margin-right: -50vw !important;
+            }
+            
+            .search-icon {
+                margin-right: 0.3rem;
+            }
+            
+            .search-input {
+                font-size: 0.9rem;
+            }
+            
+            .search-link {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo alineado a la izquierda -->
+    <div class="logo-container">
+        <img src="/Users/estebandegenaro/Downloads/ITBA_ITBAAlumnos_Identidad_Logos-02-1.png" alt="ITBA Logo" class="logo">
+    </div>
+    
+    <!-- Menú principal con títulos reorganizados en dos líneas -->
+    <div class="main-menu-container">
+        <div class="main-menu">
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Información</span>
+                        <span class="menu-title-line2">Académica</span>
+                    </div>
+                    <div class="menu-subtitle">INFORMACIÓN INSTITUCIONAL</div>
+                </a>
+                <div class="mega-submenu">
+                    <div class="mega-submenu-content">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Académica</div>
+                            <a href="#" class="mega-submenu-item">Matriculaciones</a>
+                            <div class="mega-submenu-subitem">- Materias</div>
+                            <div class="mega-submenu-subitem">- PPS</div>
+                            <div class="mega-submenu-subitem">- SAT</div>
+                            <a href="#" class="mega-submenu-item">Exámenes Finales</a>
+                            <a href="#" class="mega-submenu-item">Validación inglés</a>
+                            <a href="#" class="mega-submenu-item">Planes de estudio</a>
+                            <a href="#" class="mega-submenu-item">Grillas</a>
+                            <a href="#" class="mega-submenu-item">Calendario académico</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Experiencia Académica</div>
+                            <a href="#" class="mega-submenu-item">Ayudantías, Tareas para la Universidad e Investigaciones</a>
+                            <a href="#" class="mega-submenu-item">Postulaciones Vigentes</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Normativas</div>
+                            <a href="#" class="mega-submenu-item">Boletín General</a>
+                            <a href="#" class="mega-submenu-item">Reglamentaciones</a>
+                            <a href="#" class="mega-submenu-item">Política de Préstamo de Activos</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Becas y Préstamos</div>
+                            <a href="#" class="mega-submenu-item">Becas y Prestamos de honor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Trámites y</span>
+                        <span class="menu-title-line2">Servicios</span>
+                    </div>
+                    <div class="menu-subtitle">GESTIÓN ADMINISTRATIVA</div>
+                </a>
+                <div class="mega-submenu">
+                    <div class="mega-submenu-content">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Servicios</div>
+                            <a href="#" class="mega-submenu-item">Service Point</a>
+                            <div class="mega-submenu-subitem">- Servicio que ofrece</div>
+                            <div class="mega-submenu-subitem">- Horarios</div>
+                            <a href="#" class="mega-submenu-item">Préstamos</a>
+                            <div class="mega-submenu-subitem">- Lockers</div>
+                            <div class="mega-submenu-subitem">- Computadoras</div>
+                            <div class="mega-submenu-subitem">- Auriculares</div>
+                            <div class="mega-submenu-subitem">- Política de Préstamos</div>
+                            <a href="#" class="mega-submenu-item">Impresión</a>
+                            <a href="#" class="mega-submenu-item">Impresión 3D</a>
+                            <a href="#" class="mega-submenu-item">Kit Festejo Responsable</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Información Administrativa</div>
+                            <a href="#" class="mega-submenu-item">Certificaciones</a>
+                            <a href="#" class="mega-submenu-item">Documentación Obligatoria</a>
+                            <a href="#" class="mega-submenu-item">Facturación</a>
+                            <a href="#" class="mega-submenu-item">Inhibiciones</a>
+                            <a href="#" class="mega-submenu-item">Graduaciones</a>
+                        </div>
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Espacios</div>
+                            <a href="#" class="mega-submenu-item">Reserva TuEspacioITBA</a>
+                            <a href="#" class="mega-submenu-item">Aulas libres</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Bienestar y</span>
+                        <span class="menu-title-line2">Tutorías</span>
+                    </div>
+                    <div class="menu-subtitle">APOYO ESTUDIANTIL</div>
+                </a>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Estudiantes</span>
+                        <span class="menu-title-line2">Primer Año</span>
+                    </div>
+                    <div class="menu-subtitle">BIENVENIDA UNIVERSITARIA</div>
+                </a>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Iniciativas</span>
+                        <span class="menu-title-line2">Estudiantiles</span>
+                    </div>
+                    <div class="menu-subtitle">PROYECTOS Y ACTIVIDADES</div>
+                </a>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Movilidad</span>
+                        <span class="menu-title-line2">Internacional</span>
+                    </div>
+                    <div class="menu-subtitle">EXPERIENCIA GLOBAL</div>
+                </a>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Desarrollo</span>
+                        <span class="menu-title-line2">Profesional</span>
+                    </div>
+                    <div class="menu-subtitle">CARRERA Y EMPLEABILIDAD</div>
+                </a>
+            </div>
+            <!-- Nuevo botón de Calendario -->
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">Calendario</div>
+                    <div class="menu-subtitle">FECHAS IMPORTANTES</div>
+                </a>
+                <div class="mega-submenu">
+                    <div class="mega-submenu-content">
+                        <div class="mega-submenu-section">
+                            <div class="mega-submenu-section-title">Próximos Eventos</div>
+                            <div class="timeline-event">
+                                <div class="event-date">6 de Mayo</div>
+                                <h4 class="event-title">ITBA Global Day</h4>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="event-date">7 de Mayo</div>
+                                <h4 class="event-title">SynAck. Charla con Octavio Serpe: Ingeniero Informático en MercadoLibre</h4>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="event-date">9 de Mayo</div>
+                                <h4 class="event-title">SDF - ASME Simulación Avanzada en Estimulación Hidráulica: El Rol de la Mecánica Computacional.</h4>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="event-date">9 y 10 de Mayo</div>
+                                <h4 class="event-title">SDT Auditorio - Trama AgroConnect</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Becas y</span>
+                        <span class="menu-title-line2">Préstamos</span>
+                    </div>
+                    <div class="menu-subtitle">APOYO FINANCIERO</div>
+                </a>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                <div class="menu-title">
+                        <span class="menu-title-line1">Reglament.</span>
+                    </div>
+                    <div class="menu-subtitle">NORMATIVA INSTITUCIONAL</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="carousel-container">
+            <div class="carousel">
+                <!-- Slide 1 - Imagen -->
+                <div class="carousel-slide active" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_1.png');">
+                    <div class="carousel-content">
+                    </div>
+                </div>
+                
+                <!-- Slide 2 - Imagen -->
+                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_2.png');">
+                    <div class="carousel-content">
+                    </div>
+                </div>
+                
+                <!-- Slide 3 - Imagen -->
+                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_3.jpg');">
+                    <div class="carousel-content">
+                    </div>
+                </div>
+                
+                <!-- Slide 4 - Video -->
+                <div class="carousel-video-slide">
+                    <video autoplay muted>
+                        <source src="https://itba-web-alumnos.vercel.app/video.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                    <div class="carousel-video-content">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles del carrusel -->
+            <div class="carousel-controls">
+                <div class="carousel-dot active" data-slide="0"></div>
+                <div class="carousel-dot" data-slide="1"></div>
+                <div class="carousel-dot" data-slide="2"></div>
+                <div class="carousel-dot" data-slide="3"></div>
+            </div>
+            
+            <div class="carousel-arrows">
+                <div class="carousel-arrow prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="carousel-arrow next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Sección del buscador con título y fondo gris -->
+        <div class="search-section">
+            <h2 class="search-title">Buscar en ITBA</h2>
+            <div class="search-bar">
+                <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="search-input" placeholder="¿Qué estás buscando?">
+                <a href="#" class="search-link">Buscar</a>
+            </div>
+        </div>
+
+        <section class="latest-news-section">
+            <h2 class="section-title">Última información</h2>
+            <div class="news-cards-container">  
+                <article class="news-card">
+                    <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/tech-trek-EI.jpg" alt="International Experience" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Lorem Ipsum Placeholder</h3>
+                        <p class="news-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <a href="#" class="news-link">Leer más →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://www.itba.edu.ar/wp-content/uploads/2024/06/Fachada-SDT-1-1-1080x675.jpg" alt="Advertising and Media" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Lorem Ipsum Placeholder</h3>
+                        <p class="news-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <a href="#" class="news-link">Leer más →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://www.itba.edu.ar/wp-content/uploads/2021/07/nueva-sede-itba_jornada-06_14mayo-71-3-scaled-1.jpg" alt="New Campus" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Lorem Ipsum Placeholder</h3>
+                        <p class="news-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <a href="#" class="news-link">Leer más →</a>
+                    </div>
+                </article>
+            </div>  
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://www.itba.edu.ar/wp-content/uploads/2021/08/ITBA-logo3.png" alt="ITBA Logo">
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Somos ITBA</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Institucional</a></li>
+                    <li><a href="#" class="footer-link">Autoridades</a></li>
+                    <li><a href="#" class="footer-link">Docentes</a></li>
+                    <li><a href="#" class="footer-link">Graduados</a></li>
+                    <li><a href="#" class="footer-link">Empleos y pasantías</a></li>
+                    <li><a href="#" class="footer-link">Experiencia ITBA</a></li>
+                    <li><a href="#" class="footer-link">Sedes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Oferta Académica</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Grado</a></li>
+                    <li><a href="#" class="footer-link">Postgrado</a></li>
+                    <li><a href="#" class="footer-link">Educación ejecutiva</a></li>
+                    <li><a href="#" class="footer-link">Doctorado</a></li>
+                    <li><a href="#" class="footer-link">Servicios Corporativos</a></li>
+                    <li><a href="#" class="footer-link">ITBA global</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Becas</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Ingreso Ingenierías</a></li>
+                    <li><a href="#" class="footer-link">Ingreso Licenciaturas</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Investigación y desarrollo</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Extensión</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Campus</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Intranet</a></li>
+                    <li><a href="#" class="footer-link">Biblioteca</a></li>
+                    <li><a href="#" class="footer-link">Noticias</a></li>
+                    <li><a href="#" class="footer-link">Trabajá con nosotros</a></li>
+                    <li><a href="#" class="footer-link">Portal de Compras</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.carousel-slide, .carousel-video-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.querySelector('.carousel-arrow.prev');
+        const nextBtn = document.querySelector('.carousel-arrow.next');
+    
+        let currentIndex = 0;
+        let slideInterval = setInterval(nextSlide, 5000); // 5 segundos
+    
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                const isActive = i === index;
+                slide.classList.toggle('active', isActive);
+
+                // Pausar todos los videos que no están activos
+                const video = slide.querySelector('video');
+                if (video) {
+                    if (isActive) {
+                        video.currentTime = 0;
+                        video.play();
+
+                        // Solo agregar un event listener si aún no lo tiene
+                        if (!video.hasAttribute('data-listener-added')) {
+                            video.addEventListener('ended', () => {
+                                nextSlide();
+                            });
+                            video.setAttribute('data-listener-added', 'true');
+                        }
+                    } else {
+                        video.pause();
+                    }
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentIndex = index;
+        }
+    
+        function nextSlide() {
+            let nextIndex = (currentIndex + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+    
+        function prevSlide() {
+            let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(prevIndex);
+        }
+    
+        // Dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval); // reinicia el temporizador si el usuario interactúa
+                showSlide(index);
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        });
+    
+        // Arrows
+        nextBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            nextSlide();
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+    
+        prevBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            prevSlide();
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+    </script>
+    
+</body>
+</html>
