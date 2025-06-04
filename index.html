@@ -124,7 +124,7 @@
         }
 
         .menu-title {
-            font-size: 0.8rem; /* Reducido para que "Reglamentaciones" quepa mejor */
+            font-size: 1rem; /* Reducido para que "Reglamentaciones" quepa mejor */
             margin-bottom: 0.5rem;
             position: relative;
             z-index: 3;
@@ -847,6 +847,9 @@
         }
 
         @media (max-width: 768px) {
+            .hide-on-mobile {
+    display: none;
+  }
             .carousel-title {
                 font-size: 2rem;
             }
@@ -932,6 +935,9 @@
         }
 
         @media (max-width: 480px) {
+            .hide-on-mobile {
+    display: none;
+  }
             .footer-container {
                 grid-template-columns: 1fr;
             }
@@ -981,7 +987,7 @@
 <body>
     <!-- Logo alineado a la izquierda -->
     <div class="logo-container">
-        <img src="https://itba-wa.vercel.app/ITBA_ITBAAlumnos_Identidad_Logos-02-1.png" alt="ITBA Logo" class="logo">
+        <img src="/Users/estebandegenaro/Downloads/ITBA_ITBAAlumnos_Identidad_Logos-02-1.png" alt="ITBA Logo" class="logo">
     </div>
     
     <!-- Menú principal con títulos reorganizados en dos líneas -->
@@ -990,9 +996,7 @@
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
-                        <span class="menu-title-line1">Información</span>
-                        <span class="menu-title-line2">Académica</span>
-                    </div>
+                        <span class="menu-title-line1">Información Académica</span>                    </div>
                     <div class="menu-subtitle">MATRICULACIÖN Y EXÁMENES</div>
                 </a>
                 <div class="mega-submenu">
@@ -1030,10 +1034,9 @@
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
-                        <span class="menu-title-line1">Trámites y</span>
-                        <span class="menu-title-line2">Servicios</span>
+                        <span class="menu-title-line1">Trámites <br class="hide-on-mobile">y Servicios</span>
                     </div>
-                    <div class="menu-subtitle">GESTIÓN ADMINISTRATIVA</div>
+                    <div class="menu-subtitle">GESTIÓN <br class="hide-on-mobile">ADMINISTRATIVA</div>
                 </a>
                 <div class="mega-submenu">
                     <div class="mega-submenu-content">
@@ -1070,17 +1073,15 @@
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
-                        <span class="menu-title-line1">Bienestar y</span>
-                        <span class="menu-title-line2">Tutorías</span>
+                        <span class="menu-title-line1">Bienestar <br class="hide-on-mobile">y Tutorías</span>
                     </div>
-                    <div class="menu-subtitle">APOYO ESTUDIANTIL</div>
+                    <div class="menu-subtitle">APOYO <br class="hide-on-mobile">ESTUDIANTIL</div>
                 </a>
             </div>
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
-                        <span class="menu-title-line1">Estudiantes</span>
-                        <span class="menu-title-line2">Primer Año</span>
+                        <span class="menu-title-line1">Estudiantes <br class="hide-on-mobile">Primer Año</span>
                     </div>
                     <div class="menu-subtitle">BIENVENIDA UNIVERSITARIA</div>
                 </a>
@@ -1088,8 +1089,7 @@
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
-                        <span class="menu-title-line1">Iniciativas</span>
-                        <span class="menu-title-line2">Estudiantiles</span>
+                        <span class="menu-title-line1">Iniciativas Estudiantiles</span>
                     </div>
                     <div class="menu-subtitle">ASOCIACIONES Y ACTIVIDADES</div>
                 </a>
@@ -1097,26 +1097,32 @@
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
-                        <span class="menu-title-line1">Movilidad</span>
-                        <span class="menu-title-line2">Internacional</span>
+                        <span class="menu-title-line1">Movilidad Internacional</span>
                     </div>
-                    <div class="menu-subtitle">EXPERIENCIA GLOBAL</div>
+                    <div class="menu-subtitle">EXPERIENCIA <br class="hide-on-mobile">GLOBAL</div>
                 </a>
             </div>
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
-                        <span class="menu-title-line1">Desarrollo</span>
-                        <span class="menu-title-line2">Profesional</span>
+                        <span class="menu-title-line1">Desarrollo Profesional</span>
                     </div>
-                    <div class="menu-subtitle">CARRERA Y EMPLEABILIDAD</div>
+                    <div class="menu-subtitle">AYUDANTÍAS Y PASANTÍAS</div>
                 </a>
             </div>
             <!-- Nuevo botón de Calendario -->
             <div class="main-menu-item">
                 <a href="#">
-                    <div class="menu-title">Calendario</div>
-                    <div class="menu-subtitle">FECHAS IMPORTANTES</div>
+                    <div class="menu-title">
+                        <span class="menu-title-line1">Becas y <br class="hide-on-mobile">Préstamos</span>
+                    </div>
+                    <div class="menu-subtitle">APOYO <br class="hide-on-mobile">FINANCIERO</div>
+                </a>
+            </div>
+            <div class="main-menu-item">
+                <a href="#">
+                    <div class="menu-title"><br class="hide-on-mobile">Calendario</div>
+                    <div class="menu-subtitle">FECHAS <br class="hide-on-mobile">IMPORTANTES</div>
                 </a>
                 <div class="mega-submenu">
                     <div class="mega-submenu-content">
@@ -1144,17 +1150,8 @@
             </div>
             <div class="main-menu-item">
                 <a href="#">
-                    <div class="menu-title">
-                        <span class="menu-title-line1">Becas y</span>
-                        <span class="menu-title-line2">Préstamos</span>
-                    </div>
-                    <div class="menu-subtitle">APOYO FINANCIERO</div>
-                </a>
-            </div>
-            <div class="main-menu-item">
-                <a href="#">
                 <div class="menu-title">
-                        <span class="menu-title-line1">Reglamentaciones</span>
+                        <span class="menu-title-line1"><br class="hide-on-mobile">Reglamentaciones</span>
                     </div>
                     <div class="menu-subtitle">NORMATIVA INSTITUCIONAL</div>
                 </a>
