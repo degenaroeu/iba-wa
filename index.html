@@ -696,12 +696,16 @@
         /* BUSCADOR - SIN OVERFLOW */
         .search-section {
             background-color: #e5e7eb;
-            padding: 3rem 0;
-            margin: 0 0 10px 0;
+            padding: 3rem 0 !important;
+            margin: 0 0 10px 0 !important;
             border-radius: 0;
             box-shadow: none;
-            width: 100%;
-            max-width: 100%;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
             overflow: hidden;
         }
 
