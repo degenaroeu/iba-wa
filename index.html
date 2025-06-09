@@ -1158,35 +1158,48 @@
             
             .main-menu {
                 flex-direction: column;
+                width: 100%;
             }
-            
+
             .main-menu-item {
                 flex: none;
                 max-width: 100%;
+                width: 100%;
+                display: block;
             }
-            
+
             .main-menu-item > a {
-                padding: 0.8rem;
-                min-height: 70px;
-                /* CORRECCIÓN: Mantener flex-direction column en móvil */
+                padding: 1rem;
+                min-height: 80px;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: flex-start;
+                width: 100%;
+                display: flex;
             }
-            
+
             .menu-title {
-                font-size: 0.8rem;
-                line-height: 1.1;
-                margin-bottom: 0.3rem; /* Espacio entre título y subtítulo */
+                font-size: 0.9rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
                 width: 100%;
             }
-            
+
             .menu-subtitle {
-                font-size: 0.5rem;
+                font-size: 0.55rem;
                 letter-spacing: 0.8px;
                 width: 100%;
-                text-align: left; /* Alineado a la izquierda como en desktop */
-                margin-bottom: 0.5rem;
+                text-align: left;
+                margin-bottom: 0.8rem;
+                opacity: 0.9;
+            }
+
+            .menu-title::after {
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: rgba(255, 255, 255, 0.3);
             }
             
             .mega-submenu {
@@ -1262,27 +1275,37 @@
             }
             
             .main-menu-item > a {
-                padding: 0.6rem;
-                min-height: 60px;
-                /* CORRECCIÓN: Mantener flex-direction column en móvil */
+                padding: 0.8rem;
+                min-height: 70px;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: flex-start;
+                width: 100%;
+                display: flex;
             }
-            
+
             .menu-title {
-                font-size: 0.75rem;
-                line-height: 1;
-                margin-bottom: 0.3rem; /* Espacio entre título y subtítulo */
+                font-size: 0.8rem;
+                line-height: 1.1;
+                margin-bottom: 0.4rem;
                 width: 100%;
             }
-            
+
             .menu-subtitle {
-                font-size: 0.45rem;
+                font-size: 0.5rem;
                 letter-spacing: 0.5px;
                 width: 100%;
-                text-align: left; /* Alineado a la izquierda como en desktop */
-                margin-bottom: 0.5rem;
+                text-align: left;
+                margin-bottom: 0.7rem;
+                opacity: 0.9;
+            }
+
+            .menu-title::after {
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: rgba(255, 255, 255, 0.3);
             }
 
             .mega-submenu {
