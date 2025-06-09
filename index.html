@@ -47,7 +47,7 @@
             height: 2px; background-color: rgba(255, 255, 255, 0.4); transition: var(--transition);
         }
         
-        .menu-subtitle { font-size: 0.6rem; font-weight: 400; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.9; line-height: 1.3; position: relative; z-index: 102; width: 100%; word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
+        .menu-subtitle {font-size: 0.6rem; font-weight: 400; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.9; line-height: 1.3; position: relative; z-index: 102; width: 100%; word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
         
         .main-menu-item:nth-child(1) > a { background-color: var(--color-menu-1); }
         .main-menu-item:nth-child(2) > a { background-color: var(--color-menu-2); }
@@ -165,7 +165,7 @@
             .main-menu-item { display: flex; flex: 1; }
             .main-menu-item > a { display: flex; flex-direction: column; padding: 1.7rem 1.3rem; min-height: 130px; }
             .menu-title { font-size: 0.95rem; }
-            .menu-subtitle { font-size: 0.62rem; }
+            .menu-subtitle {padding-top: 5%; font-size: 0.62rem; }
         }
         
         @media (max-width: 1399px) and (min-width: 1200px) {
@@ -321,13 +321,13 @@
             </div>
             <div class="main-menu-item">
                 <a href="#">
-                    <div class="menu-title">Iniciativas Estudiantiles</div>
+                    <div class="menu-title">Iniciativas<br class="hide-on-mobile">Estudiantiles</div>
                     <div class="menu-subtitle">ASOCIACIONES Y ACTIVIDADES</div>
                 </a>
             </div>
             <div class="main-menu-item">
                 <a href="#">
-                    <div class="menu-title">Movilidad Internacional</div>
+                    <div class="menu-title">Movilidad<br class="hide-on-mobile">Internacional</div>
                     <div class="menu-subtitle">EXPERIENCIA <br class="hide-on-mobile">GLOBAL</div>
                 </a>
             </div>
