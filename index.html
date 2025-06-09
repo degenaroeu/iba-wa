@@ -110,7 +110,9 @@
             padding: 0;
             background-color: transparent;
             margin-top: 0;
-            overflow: hidden;
+            overflow: visible; /* Cambiado de hidden a visible para permitir submenús */
+            position: relative;
+            z-index: 100;
         }
 
         .main-menu {
@@ -119,7 +121,9 @@
             max-width: 100%;
             height: auto;
             align-items: stretch;
-            overflow: hidden;
+            overflow: visible; /* Cambiado de hidden a visible */
+            position: relative;
+            z-index: 100;
         }
 
         .main-menu-item {
@@ -128,8 +132,9 @@
             align-items: stretch;
             height: auto;
             position: relative;
-            overflow: hidden;
+            overflow: visible; /* Cambiado de hidden a visible */
             min-width: 0; /* Permite que flex items se encojan */
+            z-index: 100;
         }
 
         .main-menu-item > a {
@@ -146,7 +151,7 @@
             padding: 1.5rem 1rem;
             transition: var(--transition);
             position: relative;
-            z-index: 2;
+            z-index: 101;
             min-height: 130px;
             overflow: hidden;
         }
@@ -155,7 +160,7 @@
             font-size: 1rem;
             margin-bottom: 0.5rem;
             position: relative;
-            z-index: 3;
+            z-index: 102;
             line-height: 1.2;
             width: 100%;
             word-wrap: break-word;
@@ -191,7 +196,7 @@
             opacity: 0.9;
             line-height: 1.4;
             position: relative;
-            z-index: 3;
+            z-index: 102;
             width: 100%;
             word-wrap: break-word;
             overflow-wrap: break-word;
@@ -255,82 +260,123 @@
             width: 60px;
         }
 
-        /* Estilos para submenús desplegables - MEJORADOS */
+        /* Estilos para submenús desplegables - CORREGIDOS Y FORZADOS */
         .mega-submenu {
-            position: absolute;
-            top: 100%;
+            position: fixed; /* Cambiado de absolute a fixed para evitar cortes */
+            top: 130px; /* Ajustado para que aparezca justo debajo del menú */
             left: 0;
             right: 0;
             background: white;
-            width: 100%;
-            max-width: 100%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            width: 100%; /* Ancho completo */
+            max-width: 100%; /* Asegurar que no se corte */
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1001;
-            padding: 2rem;
-            overflow: hidden;
+            transition: all 0.4s ease;
+            z-index: 9999; /* Z-index muy alto para asegurar que aparezca */
+            padding: 3rem 5%;
+            overflow-x: visible;
+            border-top: 3px solid var(--color-primary);
         }
 
-        /* Solo mostrar submenús en desktop */
-        @media (min-width: 1025px) {
-            .main-menu-item:hover .mega-submenu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
+        /* FORZAR la aparición del submenú en hover - SIN RESTRICCIONES DE MEDIA QUERY */
+        .main-menu-item:hover .mega-submenu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
+        }
+
+        /* Asegurar que funcione también con focus para accesibilidad */
+        .main-menu-item:focus-within .mega-submenu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
         }
 
         .mega-submenu-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
 
         .mega-submenu-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .mega-submenu-section-title {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--color-primary);
-            border-bottom: 2px solid var(--color-primary);
-            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-primary);
+            padding-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .mega-submenu-item {
             display: block;
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             color: var(--color-text);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
             transition: var(--transition);
             border-bottom: 1px solid rgba(0,0,0,0.1);
+            position: relative;
         }
 
         .mega-submenu-item:hover {
             color: var(--color-primary);
-            padding-left: 10px;
+            padding-left: 15px;
+            background-color: rgba(0, 86, 179, 0.05);
+        }
+
+        .mega-submenu-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .mega-submenu-item:hover::before {
+            width: 8px;
         }
 
         .mega-submenu-subitem {
-            padding-left: 1rem;
-            font-size: 0.8rem;
+            padding-left: 2rem;
+            font-size: 0.9rem;
             color: var(--color-text-light);
             display: block;
             text-decoration: none;
-            margin: 0.2rem 0;
+            margin: 0.3rem 0;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .mega-submenu-subitem::before {
+            content: '→';
+            position: absolute;
+            left: 1rem;
+            color: var(--color-accent);
+            font-weight: bold;
         }
 
         .mega-submenu-subitem:hover {
+            color: var(--color-primary);
             text-decoration: underline;
+            padding-left: 2.5rem;
         }
 
         /* CARRUSEL - SIN OVERFLOW */
@@ -346,6 +392,7 @@
             height: 75vh;
             position: relative;
             overflow: hidden;
+            z-index: 1; /* Z-index bajo para que el submenú aparezca encima */
         }
 
         .carousel-container {
@@ -526,6 +573,8 @@
             margin: 0 auto;
             padding: 0 5%;
             overflow: hidden;
+            z-index: 1;
+            position: relative;
         }
 
 /* BUSCADOR - SIN OVERFLOW */
@@ -543,6 +592,7 @@
     margin-left: -50vw;
     margin-right: -50vw;
     overflow: hidden;
+    z-index: 1;
 }
 
         .search-title {
@@ -613,6 +663,8 @@
             margin: 10px auto 4rem auto;
             padding-top: 0;
             overflow: hidden;
+            z-index: 1;
+            position: relative;
         }
 
         .news-cards-container {
@@ -694,6 +746,8 @@
             width: 100%;
             max-width: 100%;
             overflow: hidden;
+            z-index: 1;
+            position: relative;
         }
 
         .footer-container {
@@ -872,6 +926,10 @@
             .menu-subtitle {
                 font-size: 0.65rem;
             }
+            
+            .mega-submenu {
+                top: 140px; /* Ajustar para menús más altos en pantallas grandes */
+            }
         }
 
         /* DESKTOP MEDIANO (1200px - 1399px) */
@@ -918,21 +976,6 @@
                 letter-spacing: 1.2px;
             }
             
-            /* Ajustar patrones geométricos para tablet */
-            .main-menu-item:nth-child(1) > a::after,
-            .main-menu-item:nth-child(2) > a::after,
-            .main-menu-item:nth-child(3) > a::after,
-            .main-menu-item:nth-child(4) > a::after,
-            .main-menu-item:nth-child(5) > a::after,
-            .main-menu-item:nth-child(6) > a::after,
-            .main-menu-item:nth-child(7) > a::after,
-            .main-menu-item:nth-child(8) > a::after,
-            .main-menu-item:nth-child(9) > a::after,
-            .main-menu-item:nth-child(10) > a::after {
-                transform: scale(0.8);
-                opacity: 0.6;
-            }
-            
             .news-cards-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
@@ -965,9 +1008,8 @@
                 margin-bottom: 1.5rem;
             }
             
-            /* Ocultar submenús en tablet */
             .mega-submenu {
-                display: none;
+                top: 115px; /* Ajustar para menús más pequeños en tablets */
             }
         }
 
@@ -990,9 +1032,9 @@
             }
             
             .main-menu-item {
-                flex: 1 1 calc(50% - 0.5rem);
+                flex: 1 1 calc(33.333% - 0.5rem); /* Tres elementos por fila */
                 margin: 0.25rem;
-                max-width: calc(50% - 0.5rem);
+                max-width: calc(33.333% - 0.5rem);
             }
             
             .main-menu-item > a {
@@ -1008,11 +1050,6 @@
             .menu-subtitle {
                 font-size: 0.55rem;
                 letter-spacing: 1px;
-            }
-            
-            /* Ocultar patrones geométricos en tablet pequeño */
-            .main-menu-item > a::after {
-                display: none;
             }
             
             .search-section {
@@ -1049,6 +1086,11 @@
                 justify-self: center;
                 margin-bottom: 1.5rem;
             }
+
+            /* Ocultar submenús solo en tablet pequeño y móvil */
+            .mega-submenu {
+                display: none !important;
+            }
         }
 
         /* MOBILE GRANDE (481px - 767px) */
@@ -1081,25 +1123,27 @@
             .main-menu-item > a {
                 padding: 0.8rem;
                 min-height: 70px;
+                flex-direction: row; /* Cambio a fila para mejor visualización en móvil */
+                justify-content: space-between;
+                align-items: center;
             }
             
             .menu-title {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
                 line-height: 1.1;
+                margin-bottom: 0;
+                width: auto;
             }
             
             .menu-subtitle {
-                font-size: 0.5rem;
+                font-size: 0.6rem;
                 letter-spacing: 0.8px;
-            }
-            
-            /* Ocultar patrones geométricos en mobile */
-            .main-menu-item > a::after {
-                display: none;
+                text-align: right;
+                width: auto;
             }
             
             .mega-submenu {
-                display: none;
+                display: none !important;
             }
             
             .search-section {
@@ -1171,18 +1215,29 @@
             }
             
             .main-menu-item > a {
-                padding: 0.6rem;
+                padding: 0.8rem 1rem;
                 min-height: 60px;
+                flex-direction: row; /* Cambio a fila para mejor visualización en móvil */
+                justify-content: space-between;
+                align-items: center;
             }
             
             .menu-title {
-                font-size: 0.75rem;
-                line-height: 1;
+                font-size: 0.8rem;
+                line-height: 1.2;
+                margin-bottom: 0;
+                width: auto;
             }
             
             .menu-subtitle {
-                font-size: 0.45rem;
+                font-size: 0.5rem;
                 letter-spacing: 0.5px;
+                text-align: right;
+                width: auto;
+            }
+
+            .mega-submenu {
+                display: none !important;
             }
             
             .search-section {
@@ -1246,6 +1301,46 @@
                 text-align: center;
             }
         }
+
+        /* Estilos para el menú móvil mejorado */
+        @media (max-width: 767px) {
+            .main-menu {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .main-menu-item {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .main-menu-item:last-child {
+                border-bottom: none;
+            }
+            
+            .main-menu-item > a {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1.5rem;
+                min-height: auto;
+            }
+            
+            .menu-title {
+                margin-bottom: 0;
+                font-size: 0.9rem;
+            }
+            
+            .menu-subtitle {
+                font-size: 0.6rem;
+                opacity: 0.8;
+                text-align: right;
+            }
+            
+            .menu-title::after {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1261,16 +1356,16 @@
                 <a href="#">
                     <div class="menu-title">
                         <span class="menu-title-line1">Información Académica</span>                    </div>
-                    <div class="menu-subtitle">MATRICULACIÖN Y EXÁMENES</div>
+                    <div class="menu-subtitle">MATRICULACIÓN Y EXÁMENES</div>
                 </a>
                 <div class="mega-submenu">
                     <div class="mega-submenu-content">
                         <div class="mega-submenu-section">
                             <div class="mega-submenu-section-title">Información Académica</div>
                             <a href="#" class="mega-submenu-item">Matriculaciones</a>
-                            <div class="mega-submenu-subitem">- Materias</div>
-                            <div class="mega-submenu-subitem">- PPS</div>
-                            <div class="mega-submenu-subitem">- SAT</div>
+                            <div class="mega-submenu-subitem">Materias</div>
+                            <div class="mega-submenu-subitem">PPS</div>
+                            <div class="mega-submenu-subitem">SAT</div>
                             <a href="#" class="mega-submenu-item">Exámenes Finales</a>
                             <a href="#" class="mega-submenu-item">Validación inglés</a>
                             <a href="#" class="mega-submenu-item">Planes de estudio</a>
@@ -1302,37 +1397,6 @@
                     </div>
                     <div class="menu-subtitle">GESTIÓN <br class="hide-on-mobile">ADMINISTRATIVA</div>
                 </a>
-                <div class="mega-submenu">
-                    <div class="mega-submenu-content">
-                        <div class="mega-submenu-section">
-                            <div class="mega-submenu-section-title">Servicios</div>
-                            <a href="#" class="mega-submenu-item">Service Point</a>
-                            <div class="mega-submenu-subitem">- Servicio que ofrece</div>
-                            <div class="mega-submenu-subitem">- Horarios</div>
-                            <a href="#" class="mega-submenu-item">Préstamos</a>
-                            <div class="mega-submenu-subitem">- Lockers</div>
-                            <div class="mega-submenu-subitem">- Computadoras</div>
-                            <div class="mega-submenu-subitem">- Auriculares</div>
-                            <div class="mega-submenu-subitem">- Política de Préstamos</div>
-                            <a href="#" class="mega-submenu-item">Impresión</a>
-                            <a href="#" class="mega-submenu-item">Impresión 3D</a>
-                            <a href="#" class="mega-submenu-item">Kit Festejo Responsable</a>
-                        </div>
-                        <div class="mega-submenu-section">
-                            <div class="mega-submenu-section-title">Información Administrativa</div>
-                            <a href="#" class="mega-submenu-item">Certificaciones</a>
-                            <a href="#" class="mega-submenu-item">Documentación Obligatoria</a>
-                            <a href="#" class="mega-submenu-item">Facturación</a>
-                            <a href="#" class="mega-submenu-item">Inhibiciones</a>
-                            <a href="#" class="mega-submenu-item">Graduaciones</a>
-                        </div>
-                        <div class="mega-submenu-section">
-                            <div class="mega-submenu-section-title">Espacios</div>
-                            <a href="#" class="mega-submenu-item">Reserva TuEspacioITBA</a>
-                            <a href="#" class="mega-submenu-item">Aulas libres</a>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="main-menu-item">
                 <a href="#">
@@ -1374,7 +1438,6 @@
                     <div class="menu-subtitle">AYUDANTÍAS Y PASANTÍAS</div>
                 </a>
             </div>
-            <!-- Nuevo botón de Calendario -->
             <div class="main-menu-item">
                 <a href="#">
                     <div class="menu-title">
@@ -1388,29 +1451,6 @@
                     <div class="menu-title"><br class="hide-on-mobile">Calendario</div>
                     <div class="menu-subtitle">FECHAS <br class="hide-on-mobile">IMPORTANTES</div>
                 </a>
-                <div class="mega-submenu">
-                    <div class="mega-submenu-content">
-                        <div class="mega-submenu-section">
-                            <div class="mega-submenu-section-title">Próximos Eventos</div>
-                            <div class="timeline-event">
-                                <div class="event-date">6 de Mayo</div>
-                                <h4 class="event-title">ITBA Global Day</h4>
-                            </div>
-                            <div class="timeline-event">
-                                <div class="event-date">7 de Mayo</div>
-                                <h4 class="event-title">SynAck. Charla con Octavio Serpe: Ingeniero Informático en MercadoLibre</h4>
-                            </div>
-                            <div class="timeline-event">
-                                <div class="event-date">9 de Mayo</div>
-                                <h4 class="event-title">SDF - ASME Simulación Avanzada en Estimulación Hidráulica: El Rol de la Mecánica Computacional.</h4>
-                            </div>
-                            <div class="timeline-event">
-                                <div class="event-date">9 y 10 de Mayo</div>
-                                <h4 class="event-title">SDT Auditorio - Trama AgroConnect</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="main-menu-item">
                 <a href="#">
@@ -1445,14 +1485,6 @@
                 </div>
                 
                 <!-- Slide 4 - Video -->
-                <div class="carousel-video-slide">
-                    <video autoplay muted>
-                        <source src="https://itba-web-alumnos.vercel.app/video.mp4" type="video/mp4">
-                        Tu navegador no soporta videos HTML5.
-                    </video>
-                    <div class="carousel-video-content">
-                    </div>
-                </div>
             </div>
             
             <!-- Controles del carrusel -->
@@ -1460,7 +1492,6 @@
                 <div class="carousel-dot active" data-slide="0"></div>
                 <div class="carousel-dot" data-slide="1"></div>
                 <div class="carousel-dot" data-slide="2"></div>
-                <div class="carousel-dot" data-slide="3"></div>
             </div>
             
             <div class="carousel-arrows">
