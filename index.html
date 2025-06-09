@@ -154,7 +154,7 @@
         }
 
         .menu-subtitle {
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             font-weight: 400;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -195,6 +195,152 @@
         }
         .main-menu-item:nth-child(10) > a {
             background-color: var(--color-menu-10);
+        }
+
+        /* Patrones geométricos de fondo más pequeños y aleatorios para cada botón del menú */
+        .main-menu-item:nth-child(1) > a::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background-image: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 8px, transparent 8px),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.1) 12px, transparent 12px);
+            background-size: 25px 25px, 35px 35px;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .main-menu-item:nth-child(2) > a::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            right: 15%;
+            width: 50px;
+            height: 50px;
+            background-image: 
+                linear-gradient(45deg, rgba(255,255,255,0.12) 2px, transparent 2px),
+                linear-gradient(-45deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 15px 15px, 20px 20px;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .main-menu-item:nth-child(3) > a::after {
+            content: '';
+            position: absolute;
+            top: 25%;
+            right: 8%;
+            width: 45px;
+            height: 45px;
+            background-image: 
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.12) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 2px, transparent 2px);
+            background-size: 8px 8px, 12px 12px;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .main-menu-item:nth-child(4) > a::after {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            left: 12%;
+            width: 55px;
+            height: 40px;
+            background-image: 
+                linear-gradient(30deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(60deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 12px 12px, 18px 18px;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .main-menu-item:nth-child(5) > a::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 8%;
+            width: 40px;
+            height: 50px;
+            background-image: 
+                conic-gradient(from 45deg at 50% 50%, rgba(255,255,255,0.12) 0deg, transparent 90deg, rgba(255,255,255,0.08) 180deg, transparent 270deg);
+            background-size: 20px 20px;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .main-menu-item:nth-child(6) > a::after {
+            content: '';
+            position: absolute;
+            bottom: 25%;
+            right: 12%;
+            width: 48px;
+            height: 48px;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 3px, transparent 3px, transparent 8px);
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .main-menu-item:nth-child(7) > a::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 20%;
+            width: 35px;
+            height: 60px;
+            background-image: 
+                radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.12) 40%, transparent 40%);
+            background-size: 25px 15px;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .main-menu-item:nth-child(8) > a::after {
+            content: '';
+            position: absolute;
+            bottom: 30%;
+            left: 15%;
+            width: 42px;
+            height: 42px;
+            background-image: 
+                linear-gradient(0deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 10px 10px, 14px 14px;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .main-menu-item:nth-child(9) > a::after {
+            content: '';
+            position: absolute;
+            top: 35%;
+            right: 5%;
+            width: 50px;
+            height: 35px;
+            background-image: 
+                radial-gradient(circle at 60% 40%, rgba(255,255,255,0.12) 6px, transparent 6px),
+                linear-gradient(120deg, rgba(255,255,255,0.08) 2px, transparent 2px);
+            background-size: 20px 20px, 25px 25px;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .main-menu-item:nth-child(10) > a::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 45px;
+            height: 45px;
+            background-image: 
+                repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.1) 0deg, rgba(255,255,255,0.1) 20deg, transparent 20deg, transparent 40deg);
+            background-size: 22px 22px;
+            z-index: 1;
+            opacity: 0.4;
         }
 
         /* Efecto hover con overlay más claro */
@@ -932,6 +1078,11 @@
                 padding: 0 5% !important;
                 margin: 0 !important;
             }
+
+            /* Ocultar patrones geométricos en mobile para mejor legibilidad */
+            .main-menu-item > a::after {
+                display: none;
+            }
         }
 
         @media (max-width: 480px) {
@@ -987,7 +1138,7 @@
 <body>
     <!-- Logo alineado a la izquierda -->
     <div class="logo-container">
-        <img src="https://itba-wa.vercel.app/ITBA_ITBAAlumnos_Identidad_Logos-02-1.png" alt="ITBA Logo" class="logo">
+        <img src="/Users/estebandegenaro/Downloads/ITBA_ITBAAlumnos_Identidad_Logos-02-1.png" alt="ITBA Logo" class="logo">
     </div>
     
     <!-- Menú principal con títulos reorganizados en dos líneas -->
@@ -1151,9 +1302,9 @@
             <div class="main-menu-item">
                 <a href="#">
                 <div class="menu-title">
-                        <span class="menu-title-line1"><br class="hide-on-mobile">Reglamentaciones</span>
+                        <span class="menu-title-line1">Normativa <br class="hide-on-mobile">Institucional</span>
                     </div>
-                    <div class="menu-subtitle">NORMATIVA INSTITUCIONAL</div>
+                    <div class="menu-subtitle">REGLAMENTACIONES</div>
                 </a>
             </div>
         </div>
@@ -1163,19 +1314,19 @@
         <div class="carousel-container">
             <div class="carousel">
                 <!-- Slide 1 - Imagen -->
-                <div class="carousel-slide active" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_1.png');">
+                <div class="carousel-slide active" style="background-image: url('https://www.itba.edu.ar/wp-content/uploads/2021/08/tech-trek-EI.jpg');">
                     <div class="carousel-content">
                     </div>
                 </div>
                 
                 <!-- Slide 2 - Imagen -->
-                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_2.png');">
+                <div class="carousel-slide" style="background-image: url('https://www.itba.edu.ar/wp-content/uploads/2021/08/Oatec-scaled-1.jpg');">
                     <div class="carousel-content">
                     </div>
                 </div>
                 
                 <!-- Slide 3 - Imagen -->
-                <div class="carousel-slide" style="background-image: url('https://itba-web-alumnos.vercel.app/carrusel_3.jpg');">
+                <div class="carousel-slide" style="background-image: url('https://www.itba.edu.ar/wp-content/uploads/2025/05/Bienvenida-1ero-2023-_-274-scaled.jpg');">
                     <div class="carousel-content">
                     </div>
                 </div>
